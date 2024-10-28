@@ -1,0 +1,71 @@
+{
+  //Proxy settings
+  "http.proxyStrictSSL": false,
+  "http.proxy": "http://T0309667:wikbu0-tukxyc-zepcEv@172.25.1.20:3128",
+  // General editor settings
+  "editor.autoIndent": "full",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+  "editor.fontSize": 16,
+  "editor.fontLigatures": true,
+  "editor.letterSpacing": 0.3,
+  "editor.lineHeight": 25,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 4,
+  "editor.wordWrap": "on",
+  "editor.smartSelect.selectSubwords": false,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  // File settings
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  // Search settings
+  "search.showLineNumbers": true,
+  // Theme and Icons
+  "workbench.iconTheme": "gruvbox-material-icon-theme",
+  "workbench.colorTheme": "Gruvbox Dark Soft",
+  "workbench.editor.showTabs": "none",
+  // Window settings
+  "window.zoomLevel": 0.5,
+  "window.customTitleBarVisibility": "never",
+  // Language-specific settings
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "ruff.lineLength": 320,
+  // Terminal settings
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.linuxExec": "gnome-terminal",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  // Extension settings
+  "workbench.colorCustomizations": {},
+  "indentRainbow.colors": [
+    "rgba(53, 52, 53,0.15)",
+    "rgba(42, 51, 136,0.15)",
+    "rgba(94, 45, 144, 0.15)",
+    "rgba(123, 28, 125,0.15)",
+    "rgba(218, 18, 75,0.15)",
+    "rgba(239, 83, 61,0.15)",
+    "rgba(246, 140, 31,0.15)",
+    "rgba(246, 140, 31,0.1)",
+    "rgba(246, 140, 31,0.05)",
+    "rgba(246, 140, 31,0.025)"
+  ],
+  "github.copilot.enable": {
+    "markdown": true
+  },
+  "cmake.showOptionsMovedNotification": false,
+}
