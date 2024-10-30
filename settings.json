@@ -8,7 +8,7 @@
     "chat.editor.wordWrap": "on",
     // Diff Editor
     "diffEditor.ignoreTrimWhitespace": false,
-    "diffEditor.renderSideBySide": false,
+    "diffEditor.renderSideBySide": true,
     "diffEditor.wordWrap": "on",
     // Editor settings
     "editor.autoIndent": "full",
