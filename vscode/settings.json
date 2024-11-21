@@ -1,7 +1,4 @@
 {
-    //Proxy settings
-    // "http.proxyStrictSSL": false,
-    // "http.proxy": "http://T0309667:wikbu0-tukxyc-zepcEv@172.25.1.20:3128",
     // Breadcrumbs
     "breadcrumbs.enabled": false,
     // Chat
@@ -18,7 +15,7 @@
     },
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnSaveMode": "file",
     "editor.colorDecorators": true,
     "editor.copyWithSyntaxHighlighting": false,
     "editor.cursorBlinking": "solid",
@@ -92,8 +89,6 @@
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.inheritEnv": true,
-    // Typography
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "workbench.colorCustomizations": {},
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -108,18 +103,20 @@
     "window.nativeFullScreen": true,
     "window.zoomLevel": 0.5,
     // Language-specific settings
-    "[go]": {
-        "editor.defaultFormatter": "golang.go"
-    },
-    "gopls": {
-        "formatting.gofumpt": true,
-        "ui.semanticTokens": true
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
     },
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     // Ruff
     "ruff.lineLength": 320,
@@ -141,4 +138,9 @@
         "rgba(246, 140, 31,0.05)",
         "rgba(246, 140, 31,0.025)"
     ],
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "workbench.iconTheme": "catppuccin-perfect-frappe",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }
