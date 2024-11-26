@@ -18,7 +18,7 @@
     "editor.formatOnSaveMode": "file",
     "editor.colorDecorators": true,
     "editor.copyWithSyntaxHighlighting": false,
-    "editor.cursorBlinking": "solid",
+    "editor.cursorBlinking": "expand",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "line",
     "editor.detectIndentation": false,
@@ -98,7 +98,6 @@
     "workbench.statusBar.visible": false,
     "workbench.tips.enabled": true,
     "workbench.tree.indent": 15,
-    "workbench.activityBar.location": "hidden",
     "window.newWindowDimensions": "inherit",
     "window.nativeFullScreen": true,
     "window.zoomLevel": 0.5,
@@ -118,12 +117,15 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
     // Ruff
     "ruff.lineLength": 320,
     // Extension settings
     "vscode_custom_css.imports": [
-        "file:///Users/theoguegan/.config/personal/custom-vscode.css",
-        "file:///Users/theoguegan/.config/personal/vscode-script.js"
+        "file:///Users/theoguegan/.config/vs-code-personal/custom-vscode.css",
+        "file:///Users/theoguegan/.config/vs-code-personal/vscode-script.js"
     ],
     // Indent Rainbow
     "indentRainbow.colors": [
@@ -139,8 +141,5 @@
         "rgba(246, 140, 31,0.025)"
     ],
     "workbench.colorTheme": "Catppuccin Frappé",
-    "workbench.iconTheme": "catppuccin-perfect-frappe",
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    }
+    "workbench.iconTheme": "catppuccin-perfect-frappe"
 }
