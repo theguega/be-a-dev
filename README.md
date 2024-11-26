@@ -1,6 +1,6 @@
 # Use Dotfiles everywhere with GNU Stow
 
-## Usage :
+## Example :
 ```bash
 stow tmux
 ```
