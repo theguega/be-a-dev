@@ -111,8 +111,8 @@
     },
     // Extension settings
     "vscode_custom_css.imports": [
-        "file:///Users/theoguegan/.config/vs-code-personal/custom-vscode.css",
-        "file:///Users/theoguegan/.config/vs-code-personal/vscode-script.js"
+        "file:///${userHome}/.config/vs-code-personal/custom-vscode.css",
+        "file:///${userHome}/.config/vs-code-personal/vscode-script.js"
     ],
     // Indent Rainbow
     "indentRainbow.colors": [
@@ -128,5 +128,6 @@
         "rgba(246, 140, 31,0.025)"
     ],
     "workbench.colorTheme": "Catppuccin Frappé",
-    "workbench.iconTheme": "catppuccin-perfect-frappe"
+    "workbench.iconTheme": "catppuccin-perfect-frappe",
+    "git.autofetch": true
 }
