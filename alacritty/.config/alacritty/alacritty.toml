@@ -60,6 +60,7 @@ program = "/bin/zsh"
 decorations = "full"
 dynamic_title = true
 startup_mode = "Maximized"
+opacity = 0.9
 
 [window.dimensions]
 columns = 160
@@ -68,3 +69,9 @@ lines = 80
 [window.padding]
 x = 4
 y = 4
+
+[keyboard]
+bindings = [
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]

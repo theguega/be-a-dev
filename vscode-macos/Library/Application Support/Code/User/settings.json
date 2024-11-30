@@ -102,26 +102,13 @@
     "window.nativeFullScreen": true,
     "window.zoomLevel": 0.5,
     // Language-specific settings
-    "[rust]": {
-        "editor.defaultFormatter": "rust-lang.rust-analyzer"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "ruff.lineLength": 320,
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    // Ruff
-    "ruff.lineLength": 320,
     // Extension settings
     "vscode_custom_css.imports": [
         "file:///Users/theoguegan/.config/vs-code-personal/custom-vscode.css",

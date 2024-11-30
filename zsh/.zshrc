@@ -1,7 +1,7 @@
-source ~/.zprofile
+setopt HIST_IGNORE_ALL_DUPS
 
-alias ls=eza
-alias vi=nvim
-alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+# Aliases
+[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
-eval "$(starship init zsh)"
+# Custom zsh
+[ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
