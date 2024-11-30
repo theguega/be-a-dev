@@ -11,9 +11,6 @@ apply_osx_system_defaults() {
     # Enable key repeats
     defaults write -g ApplePressAndHoldEnabled -bool false
 
-    # Enable three finger drag
-    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-
     # Disable prompting to use new exteral drives as Time Machine volume
     defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 

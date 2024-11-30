@@ -50,8 +50,6 @@ cask "alacritty"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# App that enables mouse-free UI interaction
-cask "shortcat"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Verify system files structure, run miscellaneous maintenance and more
