@@ -2,7 +2,7 @@
 
 This repository contain an installation script to download sotfware and dotfiles for my personal development environment.
 
-<img src="img/maci5.png" alt="neoftech" width=40% display="block" margin-left = "auto" margin-right = "auto">
+![Neofetch](doc/maci5.png)
 
 ## Essential Tools
 
