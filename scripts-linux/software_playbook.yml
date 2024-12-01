@@ -152,3 +152,5 @@
         - evondev.indent-rainbow-palettes
         - be5invis.vscode-custom-css
         - supermaven.supermaven
+      environment:
+        PATH: "{{ ansible_env.PATH }}:/usr/bin:/snap/bin"  # Add the correct path if necessary

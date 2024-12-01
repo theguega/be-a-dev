@@ -58,7 +58,6 @@ else
     . scripts-linux/utils.sh
     . scripts-linux/prerequisites.sh
     . scripts-linux/software-playbook.sh
-    . scripts-linux/vscode.sh
 
     info "linux profile detected"
 
@@ -79,7 +78,7 @@ else
         info "Apps"
         info "===================="
 
-        run_software_playbook
+        run_software_playbook && . scripts-linux/vscode.sh
     fi
 
     printf "\n"
