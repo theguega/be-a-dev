@@ -79,7 +79,7 @@ else
         info "Apps"
         info "===================="
 
-        run_software_playbook
+        sudo run_software_playbook
     fi
 
     printf "\n"
