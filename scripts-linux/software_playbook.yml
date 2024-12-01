@@ -53,11 +53,7 @@
         update: yes
 
     - name: Install zoxide
-      git:
-        repo: https://github.com/ajeetdsouza/zoxide
-        dest: ~/.zsh/zoxide
-        clone: yes
-        update: yes
+      shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
     # Install oh-my-posh
     - name: Install oh-my-posh
