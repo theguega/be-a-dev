@@ -6,6 +6,9 @@ zstyle ':completion:*:*:git:*' script $HOME/.config/zsh/git-completion.bash
 fpath=($HOME/.config/zsh $fpath)
 autoload -Uz compinit && compinit
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Disable underline
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none

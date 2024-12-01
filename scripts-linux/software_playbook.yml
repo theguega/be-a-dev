@@ -52,6 +52,13 @@
         clone: yes
         update: yes
 
+    - name: Tpm - tmux plugin manager
+      git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: ~/.tmux/plugins/tpm
+        clone: yes
+        update: yes
+
     - name: Install zoxide
       shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
