@@ -76,12 +76,23 @@
       when: fzf_git.changed
 
     # Install Brave browser
-    - name: Install Brave browser
-      apt_repository:
-        repo: 'deb [signed-by=/etc/apt/trusted.gpg.d/brave.asc] https://brave-browser-apt-release.s3.brave.com stable main'
-        state: present
+    - name: Add Brave Browser keyring
+      get_url:
+        url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+        dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+        mode: '0644'
 
-    - name: Install Brave
+    - name: Add Brave Browser APT repository
+      lineinfile:
+        path: /etc/apt/sources.list.d/brave-browser-release.list
+        line: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
+        create: yes
+
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Install Brave Browser
       apt:
         name: brave-browser
         state: present
