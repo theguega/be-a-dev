@@ -65,17 +65,6 @@ alias dow="$HOME/Downloads"
 # Better ls
 alias ls="eza --all --icons=always"
 
-# Command to change wallpaper on macOS
-wallpaper() {
-    if [ -z "$1" ]; then
-        echo "Usage: wallpaper <path_to_image>"
-        return 1
-    fi
-    osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"$1\""
-}
-
-compdef '_files' wallpaper
-
 # zoxide - a better cd command
 eval "$(zoxide init zsh)"
 alias cd="z"

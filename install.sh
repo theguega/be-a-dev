@@ -48,7 +48,8 @@ if [ "$os" = "Darwin" ]; then
 
     if [[ "$overwrite_dotfiles" == "y" ]]; then
     info "Using GNU Stow to create simlinks"
-        stow alacritty wallpaper git nvim ohmyposh rectangle tmux vim vscode-macos zsh-macos
+    stow -D alacritty wallpaper git nvim ohmyposh rectangle custom-vs-code tmux vim vscode-macos zsh-macos
+        stow alacritty wallpaper git nvim ohmyposh rectangle custom-vs-code tmux vim vscode-macos zsh-macos
     fi
 
     osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"~/.wallpaper/laputa_robot.jpeg\""
@@ -58,6 +59,7 @@ else
     . scripts-linux/utils.sh
     . scripts-linux/prerequisites.sh
     . scripts-linux/software-playbook.sh
+    . scripts-linux/vscode.sh
 
     info "linux profile detected"
 
@@ -78,7 +80,7 @@ else
         info "Apps"
         info "===================="
 
-        run_software_playbook && . scripts-linux/vscode.sh
+        run_software_playbook
     fi
 
     printf "\n"
@@ -88,7 +90,8 @@ else
 
     if [[ "$overwrite_dotfiles" == "y" ]]; then
     info "Using GNU Stow to create simlinks"
-        stow alacritty wallpaper git nvim ohmyposh tmux vim vscode-linux zsh-linux
+        stow -D alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
+        stow alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
     fi
 
     gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/laputa_robot.jpeg"

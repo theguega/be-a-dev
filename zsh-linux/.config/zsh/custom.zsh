@@ -14,3 +14,22 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=blue
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
+
+# Command to change wallpaper on macOS
+wallpaper() {
+    if [ -z "$1" ]; then
+        echo "Usage: wallpaper <path_to_image>"
+        return 1
+    fi
+
+    # Check if the file exists
+    if [ ! -f "$1" ]; then
+        echo "File does not exist: $1"
+        return 1
+    fi
+
+    # Set the wallpaper using gsettings
+    gsettings set org.gnome.desktop.background picture-uri "file://$1"
+}
+
+compdef '_files' wallpaper
