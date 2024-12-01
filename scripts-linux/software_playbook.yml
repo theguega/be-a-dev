@@ -124,6 +124,11 @@
         url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
         dest: "/tmp/JetBrainsMono.zip"
 
+    - name: ensure fonts directory
+      file:
+        path: "{{ lookup('env', 'HOME') }}/.fonts"
+        state: directory
+
     - name: Unzip JetBrains Mono Nerd Font
       unarchive:
         src: "/tmp/JetBrainsMono.zip"
