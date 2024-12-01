@@ -126,7 +126,7 @@
 
     - name: ensure fonts directory
       file:
-        path: "{{ lookup('env', 'HOME') }}/.fonts"
+        path: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
         state: directory
 
     - name: Unzip JetBrains Mono Nerd Font
