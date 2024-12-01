@@ -60,7 +60,7 @@
 
     # Install oh-my-posh
     - name: Install oh-my-posh
-      shell: curl -s https://ohmyposh.dev/install | sudo bash
+      shell: curl -s https://ohmyposh.dev/install.sh | bash -s
 
     # Install fzf (fuzzy finder)
     - name: Install fzf
