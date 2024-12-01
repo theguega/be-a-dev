@@ -60,6 +60,7 @@ To add a new package to the list, you can edit the `homebrew/Brewfile`.
 - Change the terminal emulator to [Ghostty](https://github.com/ghostty-org)
 - Setup sofware and dotfiles for Linux
 - See if using Nix package manager is a good idea for cross-platform setup
+- Use ansible to have an idempotent setup [Ansible](https://www.ansible.com/)
 
 ## Inspiration
 
