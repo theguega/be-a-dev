@@ -1,4 +1,5 @@
 # Oh My Posh
+export PATH=$PATH:$HOME/.local/bin
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
 
 # Load Git completion
