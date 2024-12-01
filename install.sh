@@ -56,7 +56,7 @@ if [ "$os" = "Darwin" ]; then
     success "Dotfiles set up successfully."
 else
     . scripts-linux/utils.sh
-    . scripts-macos/prerequisites.sh
+    . scripts-linux/prerequisites.sh
     . scripts-linux/software-playbook.sh
     . scripts-linux/vscode.sh
 

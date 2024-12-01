@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 . $SCRIPT_DIR/utils.sh
 
-software_playbook() {
+run_software_playbook() {
     info "Installing software on a new Ubuntu system..."
 
     # Ensure the script is being run with sudo
@@ -31,5 +31,5 @@ software_playbook() {
 }
 
 if [ "$(basename "$0")" = "$(basename "${BASH_SOURCE[0]}")" ]; then
-    software_playbook
+    run_software_playbook
 fi
