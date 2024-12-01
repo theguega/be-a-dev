@@ -83,6 +83,7 @@ wallpaper() {
 }
 
 # zoxide - a better cd command
+export PATH=$PATH:$HOME/.local/bin
 eval "$(zoxide init zsh)"
 alias cd="z"
 
