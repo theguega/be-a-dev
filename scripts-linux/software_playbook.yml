@@ -135,10 +135,15 @@
         dest: "~/.local/share/fonts/"
         remote_src: yes
 
+    - name: Update font cache
+      command: fc-cache -f -v
+      become: true
+
     # Install VSCode extensions
     - name: Install VSCode extensions
+      become: false
       shell: code --install-extension "{{ item }}"
-      with_items:
+      loop:
         - mhutchie.git-graph
         - charliermarsh.ruff
         - thang-nm.catppuccin-perfect-icons
