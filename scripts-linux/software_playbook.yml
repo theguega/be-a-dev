@@ -138,19 +138,3 @@
     - name: Update font cache
       command: fc-cache -f -v
       become: true
-
-    # Install VSCode extensions
-    - name: Install VSCode extensions
-      become: false
-      shell: code --install-extension "{{ item }}"
-      loop:
-        - mhutchie.git-graph
-        - charliermarsh.ruff
-        - thang-nm.catppuccin-perfect-icons
-        - Catppuccin.catppuccin-vsc
-        - oderwat.indent-rainbow
-        - evondev.indent-rainbow-palettes
-        - be5invis.vscode-custom-css
-        - supermaven.supermaven
-      environment:
-        PATH: "{{ ansible_env.PATH }}:/usr/bin:/snap/bin"  # Add the correct path if necessary
