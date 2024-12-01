@@ -34,6 +34,7 @@
           - gnupg
           - build-essential
           - alacritty
+          - eza
         state: present
 
     # Install Zsh plugins

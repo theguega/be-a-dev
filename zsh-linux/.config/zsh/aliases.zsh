@@ -82,8 +82,6 @@ wallpaper() {
     gsettings set org.gnome.desktop.background picture-uri "file://$1"
 }
 
-compdef '_files' wallpaper
-
 # zoxide - a better cd command
 eval "$(zoxide init zsh)"
 alias cd="z"
