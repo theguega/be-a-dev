@@ -1,0 +1,133 @@
+{
+    // Breadcrumbs
+    "breadcrumbs.enabled": false,
+    // Chat
+    "chat.editor.wordWrap": "on",
+    // Diff Editor
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.renderSideBySide": true,
+    "diffEditor.wordWrap": "on",
+    // Editor settings
+    "editor.autoIndent": "full",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.colorDecorators": true,
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.cursorBlinking": "expand",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "line",
+    "editor.detectIndentation": false,
+    "editor.emptySelectionClipboard": false,
+    "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+    "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
+    "editor.fontSize": 16,
+    "editor.letterSpacing": 0.3,
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.padding.top": 16,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "editor.renderControlCharacters": false,
+    "editor.renderLineHighlight": "none",
+    "editor.selectionHighlight": false,
+    "editor.snippetSuggestions": "top",
+    "editor.suggestFontSize": 16,
+    "editor.suggestLineHeight": 30,
+    "editor.tabSize": 4,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "keyword",
+                    "variable.language",
+                    "entity.other.attribute-name.html",
+                    "entity.other.attribute-name",
+                    "keyword.control",
+                    "storage.type",
+                    "comment",
+                    "comment.block",
+                    "comment.line"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "explorer.confirmDelete": false,
+    "explorer.sortOrder": "type",
+    // Files settings
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // Notebook
+    "notebook.output.wordWrap": true,
+    // Problems
+    "problems.decorations.enabled": false,
+    // SCM
+    "scm.diffDecorations": "none",
+    // Search settings
+    "search.showLineNumbers": true,
+    // Security
+    "security.workspace.trust.untrustedFiles": "open",
+    // Terminal settings
+    "terminal.external.linuxExec": "gnome-terminal",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.inheritEnv": true,
+    "workbench.colorCustomizations": {},
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.showTabs": "none",
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": false,
+    "workbench.tips.enabled": true,
+    "workbench.tree.indent": 15,
+    "window.newWindowDimensions": "inherit",
+    "window.nativeFullScreen": true,
+    "window.zoomLevel": 0.5,
+    // Language-specific settings
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "ruff.lineLength": 320,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    // Extension settings
+    "vscode_custom_css.imports": [
+        "file:///${userHome}/.config/vs-code-personal/custom-vscode.css",
+        "file:///${userHome}/.config/vs-code-personal/vscode-script.js"
+    ],
+    // Indent Rainbow
+    "indentRainbow.colors": [
+        "rgba(53, 52, 53,0.15)",
+        "rgba(42, 51, 136,0.15)",
+        "rgba(94, 45, 144, 0.15)",
+        "rgba(123, 28, 125,0.15)",
+        "rgba(218, 18, 75,0.15)",
+        "rgba(239, 83, 61,0.15)",
+        "rgba(246, 140, 31,0.15)",
+        "rgba(246, 140, 31,0.1)",
+        "rgba(246, 140, 31,0.05)",
+        "rgba(246, 140, 31,0.025)"
+    ],
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "workbench.iconTheme": "catppuccin-perfect-frappe",
+    "git.autofetch": true
+}

@@ -18,14 +18,23 @@ install_xcode() {
 install_homebrew() {
     info "Installing Homebrew..."
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
     if hash brew &>/dev/null; then
         warning "Homebrew already installed"
     else
         sudo --validate
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-        eval "$(/usr/local/bin/brew shellenv)"
+
+        # Detect processor architecture
+        ARCH=$(uname -m)
+        if [ "$ARCH" = "arm64" ]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        else
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
     fi
 }
+
 
 if [ "$(basename "$0")" = "$(basename "${BASH_SOURCE[0]}")" ]; then
     install_xcode

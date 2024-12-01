@@ -1,0 +1,123 @@
+---
+- name: Install software on a new Ubuntu system
+  hosts: localhost
+  become: true
+  tasks:
+
+    # Update system
+    - name: Update package list
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+
+    # Install essential packages
+    - name: Install required packages
+      apt:
+        name:
+          - zsh
+          - tmux
+          - vim
+          - neovim
+          - cmake
+          - gcc
+          - stow
+          - neofetch
+          - ripgrep
+          - xclip
+          - vlc
+          - curl
+          - git
+          - unzip
+          - gnupg
+          - build-essential
+          - alacritty
+        state: present
+
+    # Install Zsh plugins
+    - name: Install zsh-autosuggestions
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions
+        dest: ~/.zsh/zsh-autosuggestions
+        clone: yes
+        update: yes
+
+    - name: Install zsh-syntax-highlighting
+      git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting
+        dest: ~/.zsh/zsh-syntax-highlighting
+        clone: yes
+        update: yes
+
+    - name: Install zoxide
+      git:
+        repo: https://github.com/ajeetdsouza/zoxide
+        dest: ~/.zsh/zoxide
+        clone: yes
+        update: yes
+
+    # Install oh-my-posh
+    - name: Install oh-my-posh
+      shell: curl -s https://ohmyposh.dev/install | sudo bash
+
+    # Install fzf (fuzzy finder)
+    - name: Install fzf
+      git:
+        repo: https://github.com/junegunn/fzf.git
+        dest: ~/.fzf
+        clone: yes
+        update: yes
+      register: fzf_git
+
+    - name: Install fzf
+      command: ~/.fzf/install --all
+      when: fzf_git.changed
+
+    # Install Brave browser
+    - name: Install Brave browser
+      apt_repository:
+        repo: 'deb [signed-by=/etc/apt/trusted.gpg.d/brave.asc] https://brave-browser-apt-release.s3.brave.com stable main'
+        state: present
+
+    - name: Install Brave
+      apt:
+        name: brave-browser
+        state: present
+
+    # Install VSCode
+    - name: Install VSCode
+      apt_repository:
+        repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+        state: present
+
+    - name: Install VSCode
+      apt:
+        name: code
+        state: present
+
+    # Install JetBrains Mono Nerd Font
+    - name: Install JetBrains Mono Nerd Font
+      get_url:
+        url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
+        dest: "/tmp/JetBrainsMono.zip"
+
+    - name: Unzip JetBrains Mono Nerd Font
+      unarchive:
+        src: "/tmp/JetBrainsMono.zip"
+        dest: "~/.local/share/fonts/"
+        remote_src: yes
+
+    # Install VSCode extensions
+    - name: Install VSCode extensions
+      shell: code --install-extension "{{ item }}"
+      with_items:
+        - mhutchie.git-graph
+        - charliermarsh.ruff
+        - thang-nm.catppuccin-perfect-icons
+        - Catppuccin.catppuccin-vsc
+        - oderwat.indent-rainbow
+        - evondev.indent-rainbow-palettes
+        - be5invis.vscode-custom-css
+        - supermaven.supermaven

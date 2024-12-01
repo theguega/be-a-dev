@@ -64,3 +64,29 @@ alias dow="$HOME/Downloads"
 
 # Better ls
 alias ls="eza --all --icons=always"
+
+# Command to change wallpaper on macOS
+wallpaper() {
+    if [ -z "$1" ]; then
+        echo "Usage: wallpaper <path_to_image>"
+        return 1
+    fi
+
+    # Check if the file exists
+    if [ ! -f "$1" ]; then
+        echo "File does not exist: $1"
+        return 1
+    fi
+
+    # Set the wallpaper using gsettings
+    gsettings set org.gnome.desktop.background picture-uri "file://$1"
+}
+
+compdef '_files' wallpaper
+
+# zoxide - a better cd command
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# ripgrep - a better grep
+alias grep="rg --smart-case"
