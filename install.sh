@@ -1,7 +1,7 @@
 #!/bin/bash
 
 os=$(uname -s)
-echo $SHELL
+echo "$SHELL"
 
 if [ "$os" = "Darwin" ]; then
     . scripts-macos/utils.sh
@@ -32,6 +32,13 @@ if [ "$os" = "Darwin" ]; then
 
         install_custom_casks
         run_brew_bundle
+
+        printf "\n"
+        info "===================="
+        info "VS-Code config"
+        info "===================="
+
+        configure_vscode
     fi
 
     printf "\n"
@@ -66,6 +73,7 @@ else
     info "Dotfiles intallation initialized..."
     read -p "Install apps? [y/n] " install_apps
     read -p "Overwrite existing dotfiles? [y/n] " overwrite_dotfiles
+    read -p "Configure gnome extensions ? [y/n] " gnome_extensions
 
     if [[ "$install_apps" == "y" ]]; then
         printf "\@n"
@@ -81,22 +89,38 @@ else
         info "===================="
 
         run_software_playbook
+
+        printf "\n"
+        info "===================="
+        info "VS-Code config"
+        info "===================="
+
+    configure_vscode
     fi
 
+    if [[ "$gnome_extensions" == "y" ]]; then
+        printf "\@n"
+        info "===================="
+        info "Gnome config"
+        info "===================="
+
+        set_gnome_extensions
+        set_gnome_hotkeys
+    fi
+
+    if [[ "$overwrite_dotfiles" == "y" ]]; then
     printf "\n"
     info "===================="
     info "Symbolic Links"
     info "===================="
 
-    if [[ "$overwrite_dotfiles" == "y" ]]; then
     info "Using GNU Stow to create simlinks"
-        stow -D alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
-        stow alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
-    fi
+    stow -D alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
+    stow alacritty wallpaper git nvim ohmyposh tmux vim custom-vs-code vscode-linux zsh-linux
 
     gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/laputa_robot.jpeg"
-
     success "Dotfiles set up successfully."
+    fi
 fi
 
 info "Please restart your computer by running 'restart' to apply the changes."

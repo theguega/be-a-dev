@@ -79,28 +79,6 @@
       command: ~/.fzf/install --all
       when: fzf_git.changed
 
-    # Install Brave browser
-    - name: Add Brave Browser keyring
-      get_url:
-        url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-        dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
-        mode: '0644'
-
-    - name: Add Brave Browser APT repository
-      lineinfile:
-        path: /etc/apt/sources.list.d/brave-browser-release.list
-        line: "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"
-        create: yes
-
-    - name: Update APT cache
-      apt:
-        update_cache: yes
-
-    - name: Install Brave Browser
-      apt:
-        name: brave-browser
-        state: present
-
     # Install VSCode
     - name: Add Microsoft GPG key for VSCode
       apt_key:
@@ -142,3 +120,7 @@
     - name: Update font cache
       command: fc-cache -f -v
       become: true
+
+  # Ulauncher
+  - name: Install Ulauncher
+    shell: sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher
