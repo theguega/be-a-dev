@@ -6,7 +6,7 @@
     // Diff Editor
     "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.renderSideBySide": true,
-    "diffEditor.wordWrap": "on",
+    "diffEditor.wordWrap": "on",a
     // Editor settings
     "editor.autoIndent": "full",
     "editor.codeActionsOnSave": {

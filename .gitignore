@@ -1,4 +1,4 @@
 .DS_Store
 **.DS_Store
 tmux/.config/tmux/plugins
-vscode-linux/.config/Code/User/*
+vscode-linux/.config/Code/User/**
