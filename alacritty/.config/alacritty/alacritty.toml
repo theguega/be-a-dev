@@ -44,18 +44,8 @@ style = "Medium"
 x = 0
 y = 0
 
-[mouse]
-hide_when_typing = true
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mouse = "Middle"
-
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[terminal.shell]
-program = "/bin/zsh"
 
 [window]
 decorations = "full"

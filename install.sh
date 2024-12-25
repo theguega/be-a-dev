@@ -56,7 +56,7 @@ if [ "$os" = "Darwin" ]; then
     if [[ "$overwrite_dotfiles" == "y" ]]; then
     info "Using GNU Stow to create simlinks"
     stow -D alacritty wallpaper git nvim ohmyposh rectangle custom-vs-code tmux vim vscode-macos zsh-macos
-        stow alacritty wallpaper git nvim ohmyposh rectangle custom-vs-code tmux vim vscode-macos zsh-macos
+    stow alacritty wallpaper git nvim ohmyposh rectangle custom-vs-code tmux vim vscode-macos zsh-macos
     fi
 
     osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"~/.wallpaper/laputa_robot.jpeg\""
