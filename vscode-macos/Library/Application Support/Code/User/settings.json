@@ -9,6 +9,10 @@
     "diffEditor.wordWrap": "on",
     // Editor settings
     "editor.autoIndent": "full",
+    "zenMode.fullScreen": false,
+    "zenMode.showTabs": "single",
+    "zenMode.hideLineNumbers": false,
+    "zenMode.centerLayout": false,
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",
         "source.organizeImports": "explicit"
@@ -31,15 +35,9 @@
     "editor.minimap.enabled": false,
     "editor.occurrencesHighlight": "off",
     "editor.padding.top": 16,
-    "editor.quickSuggestions": {
-        "strings": true
-    },
     "editor.renderControlCharacters": false,
     "editor.renderLineHighlight": "none",
     "editor.selectionHighlight": false,
-    "editor.snippetSuggestions": "top",
-    "editor.suggestFontSize": 16,
-    "editor.suggestLineHeight": 30,
     "editor.tabSize": 4,
     "editor.tokenColorCustomizations": {
         "textMateRules": [
