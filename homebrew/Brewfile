@@ -45,7 +45,9 @@ cask "font-jetbrains-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
 # GPU-accelerated terminal emulator
-cask "alacritty"
+#cask "alacritty"
+# a native - gpu accelerated terminal emulator
+cask ghostty
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player

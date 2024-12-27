@@ -1,0 +1,8 @@
+theme = catppuccin-frappe
+font-family = JetBrainsMono Nerd Font
+font-size = 19
+term = xterm-256color
+title = " "
+cursor-style = bar
+cursor-style-blink = false
+macos-titlebar-style = tabs
