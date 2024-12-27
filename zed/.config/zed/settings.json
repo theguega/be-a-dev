@@ -95,7 +95,7 @@
   // The key to use for adding multiple cursors
   // Currently "alt" or "cmd_or_ctrl"  (also aliased as
   // "cmd" and "ctrl") are supported.
-  "multi_cursor_modifier": "cmd_or_ctrl",
+  "multi_cursor_modifier": "alt",
   // Whether to enable vim modes and key bindings.
   "vim_mode": false,
   // Whether to show the informational hover box when moving the mouse
@@ -252,7 +252,7 @@
     // Whether to show git diff indicators in the scrollbar.
     "git_diff": false,
     // Whether to show buffer search results in the scrollbar.
-    "search_results": false,
+    "search_results": true,
     // Whether to show selected symbol occurrences in the scrollbar.
     "selected_symbol": false,
     // Whether to show diagnostic indicators in the scrollbar.
@@ -1148,7 +1148,7 @@
   },
   // Vim settings
   "vim": {
-    "toggle_relative_line_numbers": false,
+    "toggle_relative_line_numbers": true,
     "use_system_clipboard": "always",
     "use_multiline_find": false,
     "use_smartcase_find": false,
