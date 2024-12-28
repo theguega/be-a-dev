@@ -1,0 +1,7 @@
+[
+  {
+    "bindings": {
+      "ctrl-i": "editor::ToggleInlayHints"
+    }
+  }
+]
