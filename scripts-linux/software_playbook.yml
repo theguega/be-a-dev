@@ -3,7 +3,6 @@
   hosts: localhost
   become: true
   tasks:
-
     # Update system
     - name: Update package list
       apt:
@@ -33,7 +32,6 @@
           - unzip
           - gnupg
           - build-essential
-          - alacritty
           - eza
         state: present
 
@@ -49,13 +47,6 @@
       git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting
         dest: ~/.zsh/zsh-syntax-highlighting
-        clone: yes
-        update: yes
-
-    - name: Tpm - tmux plugin manager
-      git:
-        repo: https://github.com/tmux-plugins/tpm
-        dest: ~/.tmux/plugins/tpm
         clone: yes
         update: yes
 
@@ -87,7 +78,7 @@
 
     - name: Add VSCode repository
       apt_repository:
-        repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+        repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
         state: present
         update_cache: yes
 
@@ -121,6 +112,6 @@
       command: fc-cache -f -v
       become: true
 
-  # Ulauncher
-  - name: Install Ulauncher
-    shell: sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher
+    # Ulauncher
+    - name: Install Ulauncher
+      shell: sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher

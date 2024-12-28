@@ -97,7 +97,7 @@
   // "cmd" and "ctrl") are supported.
   "multi_cursor_modifier": "alt",
   // Whether to enable vim modes and key bindings.
-  "vim_mode": false,
+  "vim_mode": true,
   // Whether to show the informational hover box when moving the mouse
   // over symbols in the editor.
   "hover_popover_enabled": true,

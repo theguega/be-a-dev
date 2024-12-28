@@ -6,10 +6,12 @@ This repository contain an installation script to download sotfware and dotfiles
 
 ## Essential Tools
 
-- **Editor**: [VSCode](https://code.visualstudio.com/) with some extensions
-- **Multiplexer**: [Tmux](https://github.com/tmux/tmux/wiki)
-- **Main Terminal**: [Allacrity](https://alacritty.org/index.html) a fast, cross-platform, OpenGL terminal emulator written in Rust
+- **Editor**: [Zed](https://zed.dev/) Zed is a next-generation code editor designed for high-performance collaboration with humans and AI.
+- **Terminal**: [Ghostty](https://ghostty.org/) 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU
 - **Shell Prompt**: [Oh My Posh](https://ohmyposh.dev/), a prompt theme engine for any shell written in Go
+- **Shell**: [Zsh](https://www.zsh.org/)
+- **Nvim**: [Nvim](https://neovim.io/) because I use Vim btw (sometimes)
+
 
 ## Setup
 
@@ -55,12 +57,7 @@ Dotfiles are managed using GNU Stow, which is a symbolic link manager that allow
 Software is managed using Homebrew, which is a package manager for macOS.
 To add a new package to the list, you can edit the `homebrew/Brewfile`.
 
-## Future Plans
-
-- Change the terminal emulator to [Ghostty](https://github.com/ghostty-org)
-- Setup sofware and dotfiles for Linux
-- See if using Nix package manager is a good idea for cross-platform setup
-- Use ansible to have an idempotent setup [Ansible](https://www.ansible.com/)
+On Ubuntu, i have used Ansible to manage software installations to be able to be idempotent.
 
 ## Inspiration
 
