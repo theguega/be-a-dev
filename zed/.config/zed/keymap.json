@@ -1,7 +1,8 @@
 [
   {
     "bindings": {
-      "ctrl-i": "editor::ToggleInlayHints"
+      "ctrl-i": "editor::ToggleInlayHints",
+      "shift-ctrl-c": "editor::ShowInlineCompletion"
     }
   }
 ]
