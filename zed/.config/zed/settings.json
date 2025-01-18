@@ -196,7 +196,7 @@
   "always_treat_brackets_as_autoclosed": false,
   // Controls whether inline completions are shown immediately (true)
   // or manually by triggering `editor::ShowInlineCompletion` (false).
-  "show_inline_completions": false,
+  "show_inline_completions": true,
   // Controls whether inline completions are shown in a given language scope.
   // Example: ["string", "comment"]
   "inline_completions_disabled_in": [],

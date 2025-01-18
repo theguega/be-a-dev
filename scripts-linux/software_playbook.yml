@@ -3,13 +3,10 @@
   hosts: localhost
   become: true
   tasks:
-    # Update system
-    - name: Update package list
+    # Update and upgrade system packages
+    - name: Update and upgrade the system
       apt:
         update_cache: yes
-
-    - name: Upgrade all packages
-      apt:
         upgrade: dist
 
     # Install essential packages
@@ -33,45 +30,57 @@
           - gnupg
           - build-essential
           - eza
+          - gnome-shell-extension-manager
+          - pipx
         state: present
 
     # Install Zsh plugins
-    - name: Install zsh-autosuggestions
+    - name: Clone Zsh plugins
       git:
-        repo: https://github.com/zsh-users/zsh-autosuggestions
-        dest: ~/.zsh/zsh-autosuggestions
-        clone: yes
+        repo: "{{ item.repo }}"
+        dest: "{{ item.dest }}"
         update: yes
+      loop:
+        - {
+            repo: "https://github.com/zsh-users/zsh-autosuggestions",
+            dest: "{{ ansible_env.HOME }}/.zsh/zsh-autosuggestions",
+          }
+        - {
+            repo: "https://github.com/zsh-users/zsh-syntax-highlighting",
+            dest: "{{ ansible_env.HOME }}/.zsh/zsh-syntax-highlighting",
+          }
 
-    - name: Install zsh-syntax-highlighting
-      git:
-        repo: https://github.com/zsh-users/zsh-syntax-highlighting
-        dest: ~/.zsh/zsh-syntax-highlighting
-        clone: yes
-        update: yes
-
+    # Install zoxide
     - name: Install zoxide
-      shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+      community.general.shell:
+        cmd: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+        executable: /bin/bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.zoxide"
 
     # Install oh-my-posh
     - name: Install oh-my-posh
-      shell: curl -s https://ohmyposh.dev/install.sh | bash -s
+      community.general.shell:
+        cmd: curl -s https://ohmyposh.dev/install.sh | bash -s
+        executable: /bin/bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.oh-my-posh"
 
-    # Install fzf (fuzzy finder)
+    # Install fzf
     - name: Install fzf
       git:
         repo: https://github.com/junegunn/fzf.git
-        dest: ~/.fzf
-        clone: yes
+        dest: "{{ ansible_env.HOME }}/.fzf"
         update: yes
-      register: fzf_git
 
-    - name: Install fzf
-      command: ~/.fzf/install --all
-      when: fzf_git.changed
+    - name: Run fzf installer
+      command: "{{ ansible_env.HOME }}/.fzf/install --all"
+      args:
+        chdir: "{{ ansible_env.HOME }}/.fzf"
+      when: fzf.changed
 
     # Install VSCode
-    - name: Add Microsoft GPG key for VSCode
+    - name: Add Microsoft GPG key and VSCode repository
       apt_key:
         url: https://packages.microsoft.com/keys/microsoft.asc
         state: present
@@ -80,11 +89,6 @@
       apt_repository:
         repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
         state: present
-        update_cache: yes
-
-    - name: Update APT cache
-      apt:
-        update_cache: yes
 
     - name: Install VSCode
       apt:
@@ -92,26 +96,42 @@
         state: present
 
     # Install JetBrains Mono Nerd Font
-    - name: Install JetBrains Mono Nerd Font
+    - name: Download JetBrains Mono Nerd Font
       get_url:
         url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
         dest: "/tmp/JetBrainsMono.zip"
 
-    - name: ensure fonts directory
+    - name: Ensure fonts directory exists
       file:
-        path: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
+        path: "{{ ansible_env.HOME }}/.local/share/fonts"
         state: directory
 
     - name: Unzip JetBrains Mono Nerd Font
       unarchive:
         src: "/tmp/JetBrainsMono.zip"
-        dest: "~/.local/share/fonts/"
+        dest: "{{ ansible_env.HOME }}/.local/share/fonts/"
         remote_src: yes
 
     - name: Update font cache
       command: fc-cache -f -v
-      become: true
 
-    # Ulauncher
+    # Install Ulauncher
+    - name: Add Ulauncher PPA and install
+      apt_repository:
+        repo: "ppa:agornostal/ulauncher"
+        state: present
+
     - name: Install Ulauncher
-      shell: sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher
+      apt:
+        name: ulauncher
+        state: present
+
+    # Install Ghostty
+    - name: Download Ghostty DEB
+      get_url:
+        url: "https://github.com/mkasberg/ghostty-ubuntu/releases/download/1.0.1-0-ppa2/ghostty_1.0.1-0.ppa2_amd64_24.04.deb"
+        dest: "/tmp/ghostty.deb"
+
+    - name: Install Ghostty
+      apt:
+        deb: "/tmp/ghostty.deb"

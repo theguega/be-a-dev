@@ -66,7 +66,7 @@ else
     . scripts-linux/prerequisites.sh
     . scripts-linux/software-playbook.sh
     . scripts-linux/vscode.sh
-    . scripts-linux/gnome-config.sh
+    . scripts-linux/gnome-setup.sh
 
     info "linux profile detected"
 

@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 configure_vscode() {
     info "Installing VSCode extensions"
-    code --install-extension mhutchie.git-graph
+    code --install-extension "mhutchie.git-graph"
     code --install-extension "thang-nm.catppuccin-perfect-icons"
     code --install-extension "Catppuccin.catppuccin-vsc"
     code --install-extension "oderwat.indent-rainbow"
