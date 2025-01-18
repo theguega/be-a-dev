@@ -2,7 +2,13 @@
 - name: Install software on a new Ubuntu system
   hosts: localhost
   become: yes
+  gather_facts: yes # Ensure facts are gathered to use ansible_facts
   tasks:
+    # Set the current user dynamically using whoami
+    - name: Get current user
+      set_fact:
+        user_name: "{{ ansible_user }}"
+
     # Update and upgrade system packages
     - name: Update and upgrade the system
       apt:
@@ -38,16 +44,16 @@
     - name: Clone Zsh plugins
       git:
         repo: "{{ item.repo }}"
-        dest: "{{ item.dest }}"
+        dest: "/home/{{ user_name }}/.zsh/{{ item.dest }}"
         update: yes
       loop:
         - {
             repo: "https://github.com/zsh-users/zsh-autosuggestions",
-            dest: "{{ ansible_env.HOME }}/.zsh/zsh-autosuggestions",
+            dest: "zsh-autosuggestions",
           }
         - {
             repo: "https://github.com/zsh-users/zsh-syntax-highlighting",
-            dest: "{{ ansible_env.HOME }}/.zsh/zsh-syntax-highlighting",
+            dest: "zsh-syntax-highlighting",
           }
 
     # Install zoxide
@@ -56,27 +62,29 @@
         cmd: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
         executable: /bin/bash
       args:
-        creates: "{{ ansible_env.HOME }}/.zoxide"
+        creates: "/home/{{ user_name }}/.zoxide"
 
-    # Install oh-my-posh
-    - name: Install oh-my-posh
+    # Install oh-my-posh for the specified user
+    - name: Install oh-my-posh for user
       ansible.builtin.shell:
-        cmd: curl -s https://ohmyposh.dev/install.sh | bash -s
+        cmd: curl -s https://ohmyposh.dev/install.sh | HOME=/home/{{ user_name }} bash -s
         executable: /bin/bash
       args:
-        creates: "{{ ansible_env.HOME }}/.oh-my-posh"
+        creates: "/home/{{ user_name }}/.oh-my-posh"
+      become: true
+      become_user: "{{ user_name }}"
 
     # Install fzf
     - name: Install fzf
       git:
         repo: https://github.com/junegunn/fzf.git
-        dest: "{{ ansible_env.HOME }}/.fzf"
+        dest: "/home/{{ user_name }}/.fzf"
         update: yes
 
     - name: Run fzf installer
-      command: "{{ ansible_env.HOME }}/.fzf/install --all"
+      command: "/home/{{ user_name }}/.fzf/install --all"
       args:
-        chdir: "{{ ansible_env.HOME }}/.fzf"
+        chdir: "/home/{{ user_name }}/.fzf"
 
     # Install VSCode
     - name: Add Microsoft GPG key and VSCode repository
@@ -102,13 +110,13 @@
 
     - name: Ensure fonts directory exists
       file:
-        path: "{{ ansible_env.HOME }}/.local/share/fonts"
+        path: "/home/{{ user_name }}/.local/share/fonts"
         state: directory
 
     - name: Unzip JetBrains Mono Nerd Font
       unarchive:
         src: "/tmp/JetBrainsMono.zip"
-        dest: "{{ ansible_env.HOME }}/.local/share/fonts/"
+        dest: "/home/{{ user_name }}/.local/share/fonts/"
         remote_src: yes
 
     - name: Update font cache
