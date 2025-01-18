@@ -115,15 +115,14 @@
       command: fc-cache -f -v
 
     # Install Ulauncher
-    - name: Add Ulauncher PPA and install
-      apt_repository:
-        repo: "ppa:agornostal/ulauncher"
-        state: present
+    - name: Download Ulauncher DEB
+      get_url:
+        url: "https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb"
+        dest: "/tmp/ulauncher.deb"
 
     - name: Install Ulauncher
       apt:
-        name: ulauncher
-        state: present
+        deb: "/tmp/ulauncher.deb"
 
     # Install Ghostty
     - name: Download Ghostty DEB
