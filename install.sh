@@ -117,9 +117,12 @@ else
     info "Using GNU Stow to create simlinks"
     stow  ghostty zed wallpaper ohmyposh vim nvim zsh-linux
 
-    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/laputa_robot.jpeg"
+    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/blue_landscape.png"
     success "Dotfiles set up successfully."
     fi
+
+    info "Setting default shell to zsh"
+    chsh -s /bin/zsh
 fi
 
 info "Please restart your computer by running 'restart' to apply the changes."
