@@ -77,7 +77,6 @@
       command: "{{ ansible_env.HOME }}/.fzf/install --all"
       args:
         chdir: "{{ ansible_env.HOME }}/.fzf"
-      when: fzf.changed
 
     # Install VSCode
     - name: Add Microsoft GPG key and VSCode repository
