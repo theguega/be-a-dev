@@ -1,7 +1,7 @@
 ---
 - name: Install software on a new Ubuntu system
   hosts: localhost
-  become: true
+  become: yes
   tasks:
     # Update and upgrade system packages
     - name: Update and upgrade the system
@@ -52,7 +52,7 @@
 
     # Install zoxide
     - name: Install zoxide
-      community.general.shell:
+      ansible.builtin.shell:
         cmd: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
         executable: /bin/bash
       args:
@@ -60,7 +60,7 @@
 
     # Install oh-my-posh
     - name: Install oh-my-posh
-      community.general.shell:
+      ansible.builtin.shell:
         cmd: curl -s https://ohmyposh.dev/install.sh | bash -s
         executable: /bin/bash
       args:
