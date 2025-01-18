@@ -2,13 +2,9 @@
 - name: Install software on a new Ubuntu system
   hosts: localhost
   become: yes
-  gather_facts: yes # Ensure facts are gathered to use ansible_facts
+  vars:
+    user_name: theo
   tasks:
-    # Set the current user dynamically using whoami
-    - name: Get current user
-      set_fact:
-        user_name: "{{ ansible_user }}"
-
     # Update and upgrade system packages
     - name: Update and upgrade the system
       apt:
