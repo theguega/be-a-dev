@@ -115,7 +115,7 @@ else
     info "===================="
 
     info "Using GNU Stow to create simlinks"
-    stow  ghostty zed wallpaper ohmyposh vim nvim zsh-linux
+    stow  ghostty wallpaper ohmyposh vim nvim zsh-linux vscode-linux
 
     gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/blue_landscape.png"
     success "Dotfiles set up successfully."
