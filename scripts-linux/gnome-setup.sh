@@ -8,6 +8,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 set_gnome_extensions() {
     info "Installing GNOME extensions..."
 
+    PATH="$PATH:$HOME/.local/bin"
+
     pipx install gnome-extensions-cli --system-site-packages
 
     # Turn off default Ubuntu extensions
