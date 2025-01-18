@@ -114,16 +114,6 @@
     - name: Update font cache
       command: fc-cache -f -v
 
-    # Install Ulauncher
-    - name: Download Ulauncher DEB
-      get_url:
-        url: "https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb"
-        dest: "/tmp/ulauncher.deb"
-
-    - name: Install Ulauncher
-      apt:
-        deb: "/tmp/ulauncher.deb"
-
     # Install Ghostty
     - name: Download Ghostty DEB
       get_url:
