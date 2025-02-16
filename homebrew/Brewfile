@@ -47,7 +47,7 @@ cask "font-symbols-only-nerd-font"
 # GPU-accelerated terminal emulator
 #cask "alacritty"
 # a native - gpu accelerated terminal emulator
-cask ghostty
+cask "ghostty"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player

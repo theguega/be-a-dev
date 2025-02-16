@@ -65,6 +65,9 @@ apply_osx_system_defaults() {
     defaults write com.apple.dock largesize -float 64
     defaults write com.apple.dock "minimize-to-application" -bool true
     defaults write com.apple.dock tilesize -float 64
+    defaults write com.apple.dock autohide-time-modifier -int 0
+    defaults write com.apple.dock autohide-delay -int 0
+    killall Dock
 
     # Rectangle
     defaults write com.knollsoft.Rectangle curtainChangeSize -int 2
