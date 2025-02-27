@@ -15,6 +15,8 @@ set signcolumn=yes " Keep signcolumn on by default
 set updatetime=250 " Decrease update time
 set timeoutlen=300 " Time to wait for a mapped sequence to complete (in milliseconds)
 set nobackup " Don't create a backup file
+set nowritebackup
+set noswapfile
 set nowritebackup " Don't write backup before overwriting
 set completeopt=menuone,noselect " Better completion experience
 set whichwrap+=<,>,[,],h,l " Allow certain keys to move to the next line

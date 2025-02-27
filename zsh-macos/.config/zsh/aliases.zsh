@@ -63,7 +63,7 @@ alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 
 # Better ls
-alias ls="eza --all --icons=always"
+alias ls="eza --icons=always"
 
 # zoxide - a better cd command
 eval "$(zoxide init zsh)"
