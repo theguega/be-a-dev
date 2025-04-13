@@ -45,6 +45,23 @@ cd ~/be-a-dev
 
 5. Enjoy!
 
+### Ubuntu
+
+1. Clone repo into your Home directory.
+
+```zsh
+# Use SSH (if set up)...
+git clone git@github.com:theguega/be-a-dev.git ~/
+
+# ...or use HTTPS and switch remotes later.
+git clone https://github.com/theguega/be-a-dev.git ~/
+```
+
+2. Run installation script.
+
+3. Restart your computer.
+
+4. Enjoy!
 
 ## Adding New Dotfiles and Software
 
