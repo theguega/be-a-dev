@@ -93,17 +93,12 @@
     "workbench.editor.showTabs": "none",
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "none",
-    "workbench.statusBar.visible": false,
     "workbench.tips.enabled": true,
     "workbench.tree.indent": 15,
     "window.newWindowDimensions": "inherit",
     "window.nativeFullScreen": true,
     "window.zoomLevel": 0.5,
     // Extension settings
-    "vscode_custom_css.imports": [
-        "file:///${userHome}/.config/vs-code-personal/custom-vscode.css",
-        "file:///${userHome}/.config/vs-code-personal/vscode-script.js"
-    ],
     // Indent Rainbow
     "indentRainbow.colors": [
         "rgba(53, 52, 53,0.15)",
@@ -117,7 +112,7 @@
         "rgba(246, 140, 31,0.05)",
         "rgba(246, 140, 31,0.025)"
     ],
-    "workbench.colorTheme": "Catppuccin Frappé",
+    "workbench.colorTheme": "Catppuccin Latte",
     "workbench.iconTheme": "catppuccin-perfect-frappe",
     "git.autofetch": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
@@ -125,5 +120,8 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "go.toolsManagement.autoUpdate": true,
+    "cortex-debug.liveWatchRefreshRate": 200,
+    "workbench.statusBar.visible": false,
+    "zig.zls.enabled": "on",
+    "python.defaultInterpreterPath": "/Users/guegathe/Developer/spinningup/.venv",
 }

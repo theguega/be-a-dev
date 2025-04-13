@@ -43,3 +43,5 @@ wallpaper() {
 }
 
 compdef '_files' wallpaper
+
+
