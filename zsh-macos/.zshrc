@@ -6,3 +6,5 @@ setopt HIST_IGNORE_ALL_DUPS
 # Custom zsh
 [ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
 export PATH="/usr/local/opt/binutils/bin:$PATH"
+
+. "$HOME/.local/bin/env"

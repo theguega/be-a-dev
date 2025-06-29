@@ -5,11 +5,10 @@
   // - "system": Use the theme that corresponds to the system's appearance
   // - "light": Use the theme indicated by the "light" field
   // - "dark": Use the theme indicated by the "dark" field
-  "icon_theme": "Catppuccin Latte",
   "theme": {
     "mode": "dark",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Latte"
+    "dark": "Catppuccin Frappé"
   },
   // The name of a base set of key bindings to use.
   // This setting can take four values, each named after another
@@ -25,7 +24,7 @@
   // Features that can be globally enabled or disabled
   "features": {
     // Which inline completion provider to use.
-    "edit_prediction_provider": "copilot"
+    "inline_completion_provider": "supermaven"
   },
   // The name of a font to use for rendering text in the editor
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -197,10 +196,10 @@
   "always_treat_brackets_as_autoclosed": false,
   // Controls whether inline completions are shown immediately (true)
   // or manually by triggering `editor::ShowInlineCompletion` (false).
-  "show_edit_predictions": true,
+  "show_inline_completions": true,
   // Controls whether inline completions are shown in a given language scope.
   // Example: ["string", "comment"]
-  "edit_predictions_disabled_in": [],
+  "inline_completions_disabled_in": [],
   // Whether to show tabs and spaces in the editor.
   // This setting can take three values:
   //
@@ -257,7 +256,7 @@
     // Whether to show selected symbol occurrences in the scrollbar.
     "selected_symbol": false,
     // Whether to show diagnostic indicators in the scrollbar.
-    "diagnostics": "none"
+    "diagnostics": false
   },
   // Enable middle-click paste on Linux.
   "middle_click_paste": true,
@@ -473,7 +472,7 @@
   },
   "chat_panel": {
     // Whether to show the chat panel button in the status bar.
-    "button": "never",
+    "button": false,
     // Where to the chat panel. Can be 'left' or 'right'.
     "dock": "left",
     // Default width of the chat panel.
@@ -492,7 +491,7 @@
     // Default width of the notification panel.
     "default_width": 380
   },
-  "agent": {
+  "assistant": {
     // Version of this setting.
     "version": "2",
     // Whether the assistant is enabled.
@@ -565,7 +564,7 @@
     // Whether to show the file icon for a tab.
     "file_icons": false,
     // Whether to always show the close button on tabs.
-    "show_close_button": "hover",
+    "always_show_close_button": false,
     // What to do after closing the current tab.
     //
     // 1. Activate the tab that was open previously (default)
@@ -733,7 +732,7 @@
   // 2. Load direnv configuration through the shell hook, works for POSIX shells and fish.
   //      "load_direnv": "shell_hook"
   "load_direnv": "direct",
-  "edit_predictions": {
+  "inline_completions": {
     // A list of globs representing files that inline completions should be disabled for.
     "disabled_globs": [".env"]
   },
@@ -962,6 +961,9 @@
         "allowed": true
       }
     },
+    "Dart": {
+      "tab_size": 2
+    },
     "Diff": {
       "remove_trailing_whitespace_on_save": false,
       "ensure_final_newline_on_save": false
@@ -1013,7 +1015,7 @@
       }
     },
     "Markdown": {
-      "format_on_save": "on",
+      "format_on_save": "off",
       "use_on_type_format": false,
       "prettier": {
         "allowed": true

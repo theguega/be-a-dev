@@ -71,7 +71,9 @@ else
     info "linux profile detected"
 
     info "Dotfiles intallation initialized..."
+
     read -p "Install apps? [y/n] " install_apps
+    read -p "Server mode? [y/n] " server_mode
     read -p "Overwrite existing dotfiles? [y/n] " overwrite_dotfiles
     read -p "Configure gnome extensions ? [y/n] " gnome_extensions
 
@@ -95,7 +97,7 @@ else
         info "VS-Code config"
         info "===================="
 
-    configure_vscode
+        configure_vscode
     fi
 
     if [[ "$gnome_extensions" == "y" ]]; then

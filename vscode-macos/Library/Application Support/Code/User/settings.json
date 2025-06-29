@@ -62,12 +62,10 @@
     },
     "editor.wordSeparators": "`~!@#%^&*()=+[{]}\\|;:'\",.<>/?",
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
+    "editor.wordWrapColumn": 100,
     "explorer.confirmDelete": false,
     "explorer.sortOrder": "type",
     // Files settings
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 1000,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
@@ -122,6 +120,5 @@
     },
     "cortex-debug.liveWatchRefreshRate": 200,
     "workbench.statusBar.visible": false,
-    "zig.zls.enabled": "on",
-    "python.defaultInterpreterPath": "/Users/guegathe/Developer/spinningup/.venv",
+    "extensions.ignoreRecommendations": true,
 }
