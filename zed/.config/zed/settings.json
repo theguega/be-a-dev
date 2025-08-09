@@ -508,9 +508,9 @@
     // The default model to use when creating new chats.
     "default_model": {
       // The provider to use.
-      "provider": "zed.dev",
+      "provider": "copilot_chat",
       // The model to use.
-      "model": "claude-3-5-sonnet"
+      "model": "gpt-4.1"
     }
   },
   // The settings for slash commands.
