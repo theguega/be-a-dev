@@ -20,8 +20,6 @@ brew "ripgrep"
 brew "ruby"
 # Terminal multiplexer
 brew "tmux"
-# Plugin manager for tmux
-brew "tpm"
 # Access X11 clipboards from the command-line
 brew "xclip"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -36,16 +34,12 @@ brew "eza"
 brew "zoxide"
 # Application uninstaller
 cask "appcleaner"
-# Web brower for personal use
-cask "arc"
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-jetbrains-mono-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-symbols-only-nerd-font"
-# GPU-accelerated terminal emulator
-#cask "alacritty"
 # a native - gpu accelerated terminal emulator
 cask "ghostty"
 # Open-source code editor
@@ -60,6 +54,8 @@ cask "onyx"
 cask "hiddenbar"
 # Customise mouse behavior
 cask "linearmouse"
+# Another code editor
+cask "zed"
 # VS-Code extensions
 vscode "mhutchie.git-graph"
 vscode "charliermarsh.ruff"
