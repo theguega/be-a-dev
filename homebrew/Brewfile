@@ -4,6 +4,8 @@ brew "readline"
 brew "cmake"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Better find command
+brew "fd"
 # Vim - Vi Improved
 brew "vim"
 # Nvim - Vim-fork focused on extensibility and usability

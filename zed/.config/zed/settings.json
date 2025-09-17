@@ -734,6 +734,7 @@
   "load_direnv": "direct",
   "edit_predictions": {
     // A list of globs representing files that inline completions should be disabled for.
+    "mode": "eager",
     "disabled_globs": [".env"]
   },
   // Settings specific to journaling
@@ -1083,6 +1084,23 @@
       "prettier": {
         "allowed": true
       }
+    },
+    "Python": {
+      "language_servers": ["ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
     }
   },
   // Different settings for specific language models.
@@ -1131,6 +1149,17 @@
     //         }
     //     }
     // }
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          // Ruff server settings goes here
+          "lineLength": 80,
+          "lint": {
+            "extendSelect": ["I"]
+          }
+        }
+      }
+    }
   },
   // Jupyter settings
   "jupyter": {

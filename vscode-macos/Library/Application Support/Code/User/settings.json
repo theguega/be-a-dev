@@ -121,4 +121,5 @@
     "cortex-debug.liveWatchRefreshRate": 200,
     "workbench.statusBar.visible": false,
     "extensions.ignoreRecommendations": true,
+    "github.copilot.nextEditSuggestions.enabled": true,
 }

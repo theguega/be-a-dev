@@ -71,3 +71,6 @@ alias cd="z"
 
 # ripgrep - a better grep
 alias grep="rg --smart-case"
+
+# fd - a better find
+alias find="fd"
