@@ -25,7 +25,7 @@
   // Features that can be globally enabled or disabled
   "features": {
     // Which inline completion provider to use.
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "supermaven"
   },
   // The name of a font to use for rendering text in the editor
   "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -494,7 +494,6 @@
   },
   "agent": {
     // Version of this setting.
-    "version": "2",
     // Whether the assistant is enabled.
     "enabled": false,
     // Whether to show the assistant panel button in the status bar.
@@ -735,6 +734,7 @@
   "load_direnv": "direct",
   "edit_predictions": {
     // A list of globs representing files that inline completions should be disabled for.
+    "mode": "eager",
     "disabled_globs": [".env"]
   },
   // Settings specific to journaling
@@ -1084,12 +1084,28 @@
       "prettier": {
         "allowed": true
       }
+    },
+    "Python": {
+      "language_servers": ["ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
     }
   },
   // Different settings for specific language models.
   "language_models": {
     "anthropic": {
-      "version": "1",
       "api_url": "https://api.anthropic.com"
     },
     "google": {
@@ -1099,7 +1115,6 @@
       "api_url": "http://localhost:11434"
     },
     "openai": {
-      "version": "1",
       "api_url": "https://api.openai.com/v1"
     }
   },
