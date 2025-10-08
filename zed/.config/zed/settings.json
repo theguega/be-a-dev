@@ -15,6 +15,7 @@
   "buffer_line_height": "comfortable",
   "ui_font_family": "JetBrainsMono Nerd Font",
   "ui_font_weight": 400,
+  "soft_wrap": "editor_width",
   "ui_font_size": 16,
   "multi_cursor_modifier": "alt",
   "cursor_shape": "bar",

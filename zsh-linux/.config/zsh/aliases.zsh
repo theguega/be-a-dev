@@ -75,3 +75,5 @@ alias grep="rg --smart-case"
 
 # fd - a better find
 alias find="fd"
+
+alias venv="source .venv/bin/activate"

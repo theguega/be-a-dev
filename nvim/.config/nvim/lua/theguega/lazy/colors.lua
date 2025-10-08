@@ -1,9 +1,9 @@
 function ColorMyPencils(color)
-	color = color or "catppuccin"
-	vim.cmd.colorscheme(color)
+    color = color or "catppuccin"
+    vim.cmd.colorscheme(color)
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return {
@@ -18,23 +18,23 @@ return {
         priority = 1000,
         config = function()
             require("catppuccin").setup({
-                flavour = "frappe",
+                flavour = "latte",
                 background = {
                     light = "latte",
                     dark = "mocha",
                 },
                 transparent_background = false, -- disables setting the background color.
-                show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-                term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+                show_end_of_buffer = false,     -- shows the '~' characters after the end of buffers
+                term_colors = false,            -- sets terminal colors (e.g. `g:terminal_color_0`)
                 dim_inactive = {
-                    enabled = false, -- dims the background color of inactive window
+                    enabled = false,            -- dims the background color of inactive window
                     shade = "dark",
-                    percentage = 0.15, -- percentage of the shade to apply to the inactive window
+                    percentage = 0.15,          -- percentage of the shade to apply to the inactive window
                 },
                 no_italic = false,
                 no_bold = false,
                 no_underline = false,
-                styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+                styles = {                   -- Handles the styles of general hi groups (see `:h highlight-args`):
                     comments = { "italic" }, -- Change the style of comments
                     conditionals = { "italic" },
                     loops = {},
@@ -99,7 +99,7 @@ return {
                 invert_tabline = false,
                 invert_intend_guides = false,
                 inverse = true, -- invert background for search, diffs, statuslines and errors
-                contrast = "", -- can be "hard", "soft" or empty string
+                contrast = "",  -- can be "hard", "soft" or empty string
                 palette_overrides = {},
                 overrides = {},
                 dim_inactive = false,
@@ -113,8 +113,8 @@ return {
             require("tokyonight").setup({
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
-                style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                transparent = true, -- Enable this to disable setting the background color
+                style = "storm",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+                transparent = true,     -- Enable this to disable setting the background color
                 terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
                 styles = {
                     -- Style to be applied to different syntax groups
@@ -123,7 +123,7 @@ return {
                     keywords = { italic = false },
                     -- Background styles. Can be "dark", "transparent" or "normal"
                     sidebars = "dark", -- style for sidebars, see below
-                    floats = "dark", -- style for floating windows
+                    floats = "dark",   -- style for floating windows
                 },
             })
         end
