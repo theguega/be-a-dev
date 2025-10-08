@@ -3,7 +3,7 @@
   hosts: localhost
   become: yes
   vars:
-    user_name: theo
+    user_name: theguegan
   tasks:
     # Update and upgrade system packages
     - name: Update and upgrade the system

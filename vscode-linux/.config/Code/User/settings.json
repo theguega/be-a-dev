@@ -127,7 +127,8 @@
         "rgba(246, 140, 31,0.05)",
         "rgba(246, 140, 31,0.025)"
     ],
-    "workbench.colorTheme": "Catppuccin Frappé",
-    "workbench.iconTheme": "catppuccin-perfect-frappe",
-    "git.autofetch": true
+    "workbench.colorTheme": "Catppuccin Latte",
+    "workbench.iconTheme": "catppuccin-perfect-latte",
+    "git.autofetch": true,
+    "remote.autoForwardPortsSource": "hybrid"
 }

@@ -1,6 +1,6 @@
 theme = Catppuccin Latte
 font-family = JetBrainsMono Nerd Font
-font-size = 19
+font-size = 16
 term = xterm-256color
 title = " "
 cursor-style = bar
