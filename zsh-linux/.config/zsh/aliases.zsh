@@ -77,3 +77,6 @@ alias grep="rg --smart-case"
 alias find="fd"
 
 alias venv="source .venv/bin/activate"
+
+alias vi="nvim"
+alias vim="nvim"
