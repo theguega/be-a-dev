@@ -1,130 +1,112 @@
 #!/bin/bash
+# Main installation script for cross-platform dotfiles setup
 
-os=$(uname -s)
-echo "$SHELL"
+set -euo pipefail
 
-if [ "$os" = "Darwin" ]; then
-    . scripts-macos/utils.sh
-    . scripts-macos/prerequisites.sh
-    . scripts-macos/brew-install-custom.sh
-    . scripts-macos/osx-defaults.sh
-    . scripts-macos/vscode.sh
+# Color definitions and utility functions
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-    info "macOS profile detected"
+info() { echo -e "${BLUE}==>${NC} $1"; }
+success() { echo -e "${GREEN}==>${NC} $1"; }
+warning() { echo -e "${YELLOW}==>${NC} $1"; }
+error() { echo -e "${RED}==>${NC} $1"; exit 1; }
 
-    info "Dotfiles intallation initialized..."
-    read -p "Install apps? [y/n] " install_apps
-    read -p "Overwrite existing dotfiles? [y/n] " overwrite_dotfiles
+# OS Detection
+detect_os() {
+    case "$(uname -s)" in
+        Darwin) echo "macos" ;;
+        Linux) echo "linux" ;;
+        *) error "Unsupported OS: $(uname -s)" ;;
+    esac
+}
 
-    if [[ "$install_apps" == "y" ]]; then
-        printf "\@n"
-        info "===================="
-        info "Prerequisites"
-        info "===================="
+OS=$(detect_os)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-        install_xcode
-        install_homebrew
+# Source platform-specific utilities
+source_platform_scripts() {
+    local platform="$1"
+    source "$SCRIPT_DIR/scripts-$platform/software-install.sh"
+    if [[ $platform == "macos" ]]; then
+        source "$SCRIPT_DIR/osx-defaults.sh"
+    fi
+}
 
-        printf "\n"
-        info "===================="
-        info "Apps"
-        info "===================="
+# Main installation flow with better UX
+main() {
+    info "Dotfiles installation initialized for $OS"
+    # Interactive prompts with defaults
+    read -p "Install applications? [Y/n] " -n 1 -r install_apps
+    echo
+    [[ $install_apps =~ ^[Nn]$ ]] && install_apps=false || install_apps=true
 
-        install_custom_casks
-        run_brew_bundle
+    read -p "Create symlinks? [Y/n] " -n 1 -r create_symlinks
+    echo
+    [[ $create_symlinks =~ ^[Nn]$ ]] && create_symlinks=false || create_symlinks=true
 
-        printf "\n"
-        info "===================="
-        info "VS-Code config"
-        info "===================="
+    read -p "Configure system defaults? [Y/n] " -n 1 -r configure_system
+    echo
+    [[ $configure_system =~ ^[Nn]$ ]] && configure_system=false || configure_system=true
 
-        configure_vscode
+    # Platform-specific installation
+    case "$OS" in
+        macos) install_macos ;;
+        linux) install_linux ;;
+    esac
+
+    info "Please restart your computer to apply all changes."
+}
+
+install_macos() {
+    source_platform_scripts "macos"
+
+    if $install_apps; then
+        run_with_progress "Installing prerequisites" install_prerequisites
+        run_with_progress "Installing applications" install_applications
     fi
 
-    printf "\n"
-    info "===================="
-    info "OSX System Defaults"
-    info "===================="
-
-    apply_osx_system_defaults
-
-    printf "\n"
-    info "===================="
-    info "Symbolic Links"
-    info "===================="
-
-    if [[ "$overwrite_dotfiles" == "y" ]]; then
-    info "Using GNU Stow to create simlinks"
-    stow  ghostty zed wallpaper ohmyposh vim nvim zsh-macos
+    if $create_symlinks; then
+        stow aerospace ohmyposh vscode-macos zsh ghostty wallpaper git nvim zed
     fi
 
-    osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"~/.wallpaper/laputa_robot.jpeg\""
+    if $configure_system; then
+        run_with_progress "Applying system defaults" apply_system_defaults
+    fi
+}
 
-    success "Dotfiles set up successfully."
-else
-    . scripts-linux/utils.sh
-    . scripts-linux/prerequisites.sh
-    . scripts-linux/software-playbook.sh
-    . scripts-linux/vscode.sh
-    . scripts-linux/gnome-setup.sh
+install_linux() {
+    source_platform_scripts "linux"
 
-    info "linux profile detected"
-
-    info "Dotfiles intallation initialized..."
-
-    read -p "Install apps? [y/n] " install_apps
-    read -p "Server mode? [y/n] " server_mode
-    read -p "Overwrite existing dotfiles? [y/n] " overwrite_dotfiles
-    read -p "Configure gnome extensions ? [y/n] " gnome_extensions
-
-    if [[ "$install_apps" == "y" ]]; then
-        printf "\@n"
-        info "===================="
-        info "Prerequisites"
-        info "===================="
-
-        install_ansible_and_git
-
-        printf "\n"
-        info "===================="
-        info "Apps"
-        info "===================="
-
-        run_software_playbook
-
-        printf "\n"
-        info "===================="
-        info "VS-Code config"
-        info "===================="
-
-        configure_vscode
+    if $install_apps; then
+        run_with_progress "Installing prerequisites" install_prerequisites
+        run_with_progress "Installing applications" install_applications
     fi
 
-    if [[ "$gnome_extensions" == "y" ]]; then
-        printf "\@n"
-        info "===================="
-        info "Gnome config"
-        info "===================="
-
-        set_gnome_extensions
-        set_gnome_hotkeys
+    if $create_symlinks; then
+        stow aerospace ohmyposh vscode-linux zsh ghostty wallpaper git nvim zed
     fi
 
-    if [[ "$overwrite_dotfiles" == "y" ]]; then
-    printf "\n"
-    info "===================="
-    info "Symbolic Links"
-    info "===================="
-
-    info "Using GNU Stow to create simlinks"
-    stow  ghostty wallpaper ohmyposh vim nvim zsh-linux vscode-linux
-
-    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.wallpaper/blue_landscape.png"
-    success "Dotfiles set up successfully."
+    if $configure_system; then
+        run_with_progress "Configuring GNOME" configure_gnome
     fi
 
     info "Setting default shell to zsh"
     chsh -s /bin/zsh
-fi
+}
 
-info "Please restart your computer by running 'restart' to apply the changes."
+run_with_progress() {
+    local message="$1"
+    local command="$2"
+    info "$message..."
+    if $command; then
+        success "$message completed"
+    else
+        error "$message failed"
+    fi
+}
+
+main "$@"

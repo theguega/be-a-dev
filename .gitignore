@@ -2,3 +2,4 @@
 **.DS_Store
 tmux/.config/tmux/plugins
 vscode-linux/.config/Code/User/**
+zed/.config/zed/conversations

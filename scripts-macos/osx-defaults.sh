@@ -1,85 +1,62 @@
 #!/bin/bash
+# macOS system defaults configuration
 
-# Get the absolute path of the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/utils.sh"
 
-. $SCRIPT_DIR/utils.sh
+apply_system_defaults() {
+    info "Applying macOS system defaults..."
 
-apply_osx_system_defaults() {
-    info "Applying OSX system defaults..."
-
-    # Enable key repeats
+    # Keyboard & Input
     defaults write -g ApplePressAndHoldEnabled -bool false
+    defaults write -g KeyRepeat -int 2
+    defaults write -g InitialKeyRepeat -int 15
 
-    # Disable prompting to use new exteral drives as Time Machine volume
-    defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-    # Hide external hard drives on desktop
+    # Finder
     defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-
-    # Hide hard drives on desktop
     defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
-
-    # Hide removable media hard drives on desktop
     defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
-
-    # Hide mounted servers on desktop
     defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
-
-    # Hide icons on desktop
     defaults write com.apple.finder CreateDesktop -bool false
-
-    # Avoid creating .DS_Store files on network volumes
-    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-    # Show path bar
     defaults write com.apple.finder ShowPathbar -bool true
-
-    # Show hidden files inside the finder
+    defaults write com.apple.finder ShowStatusBar -bool true
     defaults write com.apple.finder "AppleShowAllFiles" -bool true
-
-    # Show Status Bar
-    defaults write com.apple.finder "ShowStatusBar" -bool true
-
-    # Do not show warning when changing the file extension
     defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-    # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+    # Screenshots
     defaults write com.apple.screencapture type -string "png"
+    defaults write com.apple.screencapture disable-shadow -bool true
 
-    # Set weekly software update checks
+    # Dock
+    defaults write com.apple.dock tilesize -float 48
+    defaults write com.apple.dock autohide -bool true
+    defaults write com.apple.dock autohide-delay -float 1000
+    defaults write com.apple.dock show-recents -bool false
+    defaults write com.apple.dock mru-spaces -bool false
+
+    # Mission Control
+    defaults write com.apple.spaces spans-displays -bool false
+
+    # Software Updates
     defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 7
 
-    # Spaces span all displays
-    defaults write com.apple.spaces "spans-displays" -bool false
+    # Disable Spotlight shortcut (for Raycast)
+    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{enabled = 0; value = { parameters = (32, 49, 1048576); type = 'standard'; };}"
+    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 "{enabled = 0; value = { parameters = (32, 49, 1048576); type = 'standard'; };}"
 
-    # Do not rearrange spaces automatically
-    defaults write com.apple.dock "mru-spaces" -bool false
+    # Security
+    defaults write com.apple.screensaver askForPassword -bool true
+    defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-    # Disable Spotlight's keyboard shortcut to use Raycast
-    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{enabled = 0; }"
-    defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 65 "{enabled = 0; }"
-
-    # Set Dock autohide
-    defaults write com.apple.dock autohide -bool true
-    defaults write com.apple.dock largesize -float 64
-    defaults write com.apple.dock "minimize-to-application" -bool true
-    defaults write com.apple.dock tilesize -float 64
-    defaults write com.apple.dock autohide-time-modifier -int 0
-    defaults write com.apple.dock autohide-delay -int 0
+    # Kill affected applications
+    killall Finder
     killall Dock
+    killall SystemUIServer
 
-    # Rectangle
-    defaults write com.knollsoft.Rectangle curtainChangeSize -int 2
-    defaults write com.knollsoft.Rectangle almostMaximizeHeight -float 1
-    defaults write com.knollsoft.Rectangle almostMaximizeWidth -float 0.85
-
-    # Rectangle custom window size with Shift + Alt + Ctrl + Cmd + N
-    defaults write com.knollsoft.Rectangle specified -dict-add keyCode -float 45 modifierFlags -float 1966379
-    defaults write com.knollsoft.Rectangle specifiedHeight -float 1055
-    defaults write com.knollsoft.Rectangle specifiedWidth -float 1876
+    success "macOS defaults applied"
 }
 
-if [ "$(basename "$0")" = "$(basename "${BASH_SOURCE[0]}")" ]; then
-    apply_osx_system_defaults
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    apply_system_defaults
 fi

@@ -1,8 +1,5 @@
 theme = Catppuccin Latte
 font-family = JetBrainsMono Nerd Font
-font-size = 16
+font-size = 22
 term = xterm-256color
-title = " "
-cursor-style = bar
-cursor-style-blink = false
-macos-titlebar-style = tabs
+cursor-click-to-move = true

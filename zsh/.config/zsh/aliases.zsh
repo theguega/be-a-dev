@@ -79,3 +79,7 @@ alias venv="source .venv/bin/activate"
 
 alias vi="nvim"
 alias vim="nvim"
+
+alias "??"="aichat -e"
+
+source ~/.keys/export_keys.sh

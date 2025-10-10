@@ -1,69 +1,41 @@
-# Library for command-line editing
+# Cross-platform CLI tools (work on both macOS and Linux)
 brew "readline"
-# Cross-platform make
 brew "cmake"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# Better find command
 brew "fd"
-# Vim - Vi Improved
 brew "vim"
-# Nvim - Vim-fork focused on extensibility and usability
 brew "neovim"
-# GNU compiler collection
 brew "gcc"
-# GNU simlink farm manager
 brew "stow"
-# Fast, highly customisable system info script
 brew "neofetch"
-# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Terminal multiplexer
-brew "tmux"
-# Access X11 clipboards from the command-line
 brew "xclip"
-# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Cross-shell prompt for astronauts
+brew "docker"
+brew "docker-compose"
 brew "oh-my-posh"
-# Modern, maintained replacement for ls
 brew "eza"
-# A better cd command
 brew "zoxide"
-# Application uninstaller
-cask "appcleaner"
-# Developer targeted fonts with a high number of glyphs
-cask "font-hack-nerd-font"
-# Developer targeted fonts with a high number of glyphs
-cask "font-jetbrains-mono-nerd-font"
-# Developer targeted fonts with a high number of glyphs
-cask "font-symbols-only-nerd-font"
-# a native - gpu accelerated terminal emulator
-cask "ghostty"
-# Open-source code editor
-cask "visual-studio-code"
-# Multimedia player
-cask "vlc"
-# Control your tools with a few keystrokes
-cask "raycast"
-# Verify system files structure, run miscellaneous maintenance and more
-cask "onyx"
-# Utility to hide menu bar items
-cask "hiddenbar"
-# Customise mouse behavior
-cask "linearmouse"
-# Another code editor
-cask "zed"
-# VS-Code extensions
-vscode "mhutchie.git-graph"
-vscode "charliermarsh.ruff"
-vscode "thang-nm.catppuccin-perfect-icons"
-vscode "Catppuccin.catppuccin-vsc"
-vscode "oderwat.indent-rainbow"
-vscode "evondev.indent-rainbow-palettes"
-vscode "be5invis.vscode-custom-css"
-vscode "supermaven.supermaven"
+
+# macOS-only GUI applications and tools
+if OS.mac?
+  cask "appcleaner"
+  cask "font-hack-nerd-font"
+  cask "font-jetbrains-mono-nerd-font"
+  cask "font-symbols-only-nerd-font"
+  cask "ghostty"
+  cask "aerospace"
+  cask "visual-studio-code"
+  cask "vlc"
+  cask "raycast"
+  cask "onyx"
+  cask "hiddenbar"
+  cask "cursor"
+  cask "linearmouse"
+  cask "zed"
+end
+
+# VSCode extensions (installed via platform-specific scripts)
+# These are handled by vscode.sh scripts on each platform

@@ -1,5 +1,7 @@
 #!/bin/bash
+# Utility functions for Linux dotfiles setup
 
+# Color definitions
 default_color=$(tput sgr 0)
 red="$(tput setaf 1)"
 yellow="$(tput setaf 3)"
@@ -16,6 +18,7 @@ success() {
 
 error() {
     printf "%s==> %s%s\n" "$red" "$1" "$default_color"
+    exit 1
 }
 
 warning() {
