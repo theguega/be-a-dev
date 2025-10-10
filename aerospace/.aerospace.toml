@@ -21,16 +21,6 @@ automatically-unhide-macos-hidden-apps = true
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
-
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
-
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
@@ -58,8 +48,11 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace G'
+if.app-id="com.mitchellh.ghostty"
+run= [
+  "layout tiling",
+  "move-node-to-workspace G",
+]
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
@@ -76,9 +69,3 @@ run = 'move-node-to-workspace F'
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace M'
-
-[[on-window-detected]]
-if.app-id="com.mitchellh.ghostty"
-run= [
-  "layout tiling",
-]

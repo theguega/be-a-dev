@@ -87,7 +87,7 @@ install_linux() {
     fi
 
     if $create_symlinks; then
-        stow aerospace ohmyposh vscode-linux zsh ghostty wallpaper git nvim zed
+        stow ohmyposh vscode-linux zsh ghostty wallpaper git nvim zed
     fi
 
     if $configure_system; then

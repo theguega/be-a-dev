@@ -18,6 +18,7 @@ brew "docker-compose"
 brew "oh-my-posh"
 brew "eza"
 brew "zoxide"
+brew "aichat"
 
 # macOS-only GUI applications and tools
 if OS.mac?
