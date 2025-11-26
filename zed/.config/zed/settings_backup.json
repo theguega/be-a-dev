@@ -72,11 +72,11 @@
   },
   "languages": {
     "Python": {
-      "code_actions_on_format": {
-        "source.organizeImports.ruff": true,
-        "source.fixAll.ruff": true
-      },
-      "format_on_save": "on"
+      "format_on_save": "on",
+      "formatter": [
+        { "code_action": "source.fixAll.ruff" },
+        { "code_action": "source.organizeImports.ruff" }
+      ]
     }
   }
 }

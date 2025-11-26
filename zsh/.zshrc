@@ -1,11 +1,24 @@
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 export PATH="/usr/local/bin:$PATH"
 export DEFAULT_USER="$(whoami)"
-export EDITOR=/opt/homebrew/bin/nvim
+export EDITOR=/usr/local/bin/nvim
+export VISUAL=/usr/local/bin/nvim
+
+ARCH=$(uname -m)
+
+if [ "$ARCH" = "arm64" ]; then
+    # Apple Silicon (ARM)
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    # Intel (x86)
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -17,6 +30,7 @@ autoload -U colors && colors
 source ~/.keys/export_keys.sh
 
 # tools
+source $HOME/.local/bin/env
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -76,3 +90,12 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
+
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
