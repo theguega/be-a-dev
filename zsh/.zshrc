@@ -64,7 +64,7 @@ alias gca="git commit -a -m"
 alias gp="git push origin HEAD"
 alias gpu="git pull origin"
 alias gst="git status"
-alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+alias glog="git log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias gdiff="git diff"
 alias gco="git checkout"
 alias gb='git branch'
