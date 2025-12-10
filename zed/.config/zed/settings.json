@@ -73,6 +73,7 @@
   },
   "languages": {
     "Python": {
+      "language_servers": ["ty", "!basedpyright", "..."],
       "code_actions_on_format": {
         "source.organizeImports.ruff": true,
         "source.fixAll.ruff": true
