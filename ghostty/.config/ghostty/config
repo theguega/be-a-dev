@@ -1,8 +1,9 @@
 theme = Catppuccin Latte
 font-family = JetBrainsMono Nerd Font
-font-size = 22
 term = xterm-256color
 cursor-click-to-move = true
-background-blur-radius = 20
 mouse-hide-while-typing = true
-window-decoration = true
+unfocused-split-opacity = 0.3
+font-size=18
+font-thicken=true
+font-thicken-strength=1

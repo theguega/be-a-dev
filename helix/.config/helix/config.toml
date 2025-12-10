@@ -27,7 +27,7 @@ down = "no_op"
 left = "no_op"
 right = "no_op"
 
-[keys.visual]
+[keys.select]
 up =  "no_op"
 down = "no_op"
 left = "no_op"

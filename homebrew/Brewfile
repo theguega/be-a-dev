@@ -1,4 +1,5 @@
 # Cross-platform CLI tools (work on both macOS and Linux)
+brew "gitui"
 brew "readline"
 brew "llvm"
 brew "cmake"
