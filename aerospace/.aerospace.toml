@@ -22,25 +22,29 @@ automatically-unhide-macos-hidden-apps = true
     ctrl-2 = 'workspace 2'
     ctrl-3 = 'workspace 3'
     ctrl-4 = 'workspace 4'
+    ctrl-5 = 'workspace 5'
+    ctrl-6 = 'workspace 6'
+    ctrl-7 = 'workspace 7'
+    ctrl-8 = 'workspace 8'
+    ctrl-9 = 'workspace 9'
 
     ctrl-g = "workspace G" # Ghostty
-    ctrl-z = "workspace E" # Zed
     ctrl-s = "workspace S" # Safari
     ctrl-f = "workspace F" # Finder
-    ctrl-m = "workspace M" # Mail
-    ctrl-n = "workspace N" # Obsidian
 
     ctrl-shift-1 = 'move-node-to-workspace 1'
     ctrl-shift-2 = 'move-node-to-workspace 2'
     ctrl-shift-3 = 'move-node-to-workspace 3'
     ctrl-shift-4 = 'move-node-to-workspace 4'
+    ctrl-shift-5 = 'move-node-to-workspace 5'
+    ctrl-shift-6 = 'move-node-to-workspace 6'
+    ctrl-shift-7 = 'move-node-to-workspace 7'
+    ctrl-shift-8 = 'move-node-to-workspace 8'
+    ctrl-shift-9 = 'move-node-to-workspace 9'
 
-    ctrl-shift-f = 'move-node-to-workspace F'
     ctrl-shift-g = 'move-node-to-workspace G'
-    ctrl-shift-m = 'move-node-to-workspace M'
     ctrl-shift-s = 'move-node-to-workspace S'
-    ctrl-shift-e = 'move-node-to-workspace E'
-    ctrl-shift-n = 'move-node-to-workspace N'
+    ctrl-shift-f = 'move-node-to-workspace F'
 
     alt-tab = 'workspace-back-and-forth'
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -52,14 +56,6 @@ automatically-unhide-macos-hidden-apps = true
 [[on-window-detected]]
 if.app-id="com.mitchellh.ghostty"
 run= 'move-node-to-workspace G'
-
-[[on-window-detected]]
-if.app-id = 'dev.zed.Zed'
-run = 'move-node-to-workspace E'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
@@ -75,7 +71,3 @@ run= [
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace M'

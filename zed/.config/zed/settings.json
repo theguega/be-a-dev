@@ -21,9 +21,6 @@
   "multi_cursor_modifier": "alt",
   "cursor_shape": "bar",
   "cursor_blink": false,
-  "tab_bar": {
-    "show": false
-  },
   "outline_panel": {
     "dock": "right"
   },
@@ -37,12 +34,9 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini"
+      "model": "oswe-vscode-prime"
     },
     "dock": "left"
-  },
-  "tabs": {
-    "close_position": "right"
   },
   "terminal": {
     "default_height": 200,
@@ -63,6 +57,9 @@
     "search_results": true,
     "selected_symbol": false,
     "selected_text": false
+  },
+  "tab_bar": {
+    "show": false
   },
   "toolbar": {
     "breadcrumbs": false,

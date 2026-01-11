@@ -99,3 +99,10 @@ export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
 # Added by Antigravity
 export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# bun completions
+[ -s "/Users/theguega/.bun/_bun" ] && source "/Users/theguega/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

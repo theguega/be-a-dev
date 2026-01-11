@@ -44,10 +44,6 @@ main() {
     echo
     [[ $install_apps =~ ^[Nn]$ ]] && install_apps=false || install_apps=true
 
-    read -p "Create symlinks? [Y/n] " -n 1 -r create_symlinks
-    echo
-    [[ $create_symlinks =~ ^[Nn]$ ]] && create_symlinks=false || create_symlinks=true
-
     read -p "Configure system defaults? [Y/n] " -n 1 -r configure_system
     echo
     [[ $configure_system =~ ^[Nn]$ ]] && configure_system=false || configure_system=true
@@ -67,10 +63,6 @@ install_macos() {
     if $install_apps; then
         run_with_progress "Installing prerequisites" install_prerequisites
         run_with_progress "Installing applications" install_applications
-    fi
-
-    if $create_symlinks; then
-        stow aerospace ohmyposh vscode-macos zsh ghostty wallpaper git nvim zed
     fi
 
     if $configure_system; then
