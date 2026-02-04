@@ -10,15 +10,18 @@ export EDITOR=/usr/local/bin/nvim
 export VISUAL=/usr/local/bin/nvim
 
 ARCH=$(uname -m)
+OS=$(uname -s)
 
 if [ "$ARCH" = "arm64" ]; then
     # Apple Silicon (ARM)
     eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ "$OS" = "Linux" ]; then
+    # Linux
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 else
-    # Intel (x86)
+    # Intel (x86) or other
     eval "$(/usr/local/bin/brew shellenv)"
 fi
-
 
 setopt prompt_subst
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
