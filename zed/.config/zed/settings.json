@@ -1,4 +1,30 @@
 {
+  "edit_predictions": {
+    "provider": "zed"
+  },
+  "ssh_connections": [
+    {
+      "host": "polarbear",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/theo"
+          ]
+        },
+        {
+          "paths": [
+            "/home/theo/Developer"
+          ]
+        },
+        {
+          "paths": [
+            "/home/theo/Developer/agilex"
+          ]
+        }
+      ]
+    }
+  ],
   "vim_mode": true,
   "icon_theme": "Catppuccin Latte",
   "theme": {
@@ -7,9 +33,6 @@
     "dark": "Catppuccin Latte - No Italics"
   },
   "base_keymap": "VSCode",
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 16,
   "buffer_font_weight": 400,
@@ -34,7 +57,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "oswe-vscode-prime"
+      "model": "gpt-5-mini"
     },
     "dock": "left"
   },
