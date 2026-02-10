@@ -34,6 +34,13 @@ source_platform_scripts() {
     if [[ $platform == "macos" ]]; then
         source "$SCRIPT_DIR/osx-defaults.sh"
     fi
+    if [[ "$platform" = "linux" ]]; then
+        source "$SCRIPT_DIR/gnome-setup.sh"
+    fi
+}
+
+configure_gnome() {
+    exec "$SCRIPT_DIR/gnome-setup.sh"
 }
 
 # Main installation flow with better UX
@@ -78,12 +85,9 @@ install_linux() {
         run_with_progress "Installing applications" install_applications
     fi
 
-    if $create_symlinks; then
-        stow ohmyposh vscode-linux zsh ghostty wallpaper git nvim zed
-    fi
-
     if $configure_system; then
-        run_with_progress "Configuring GNOME" configure_gnome
+        run_with_progress "Setup GNOME extensions" set_gnome_extensions
+        run_with_progress "Setup GNOME hotkeys" set_gnome_hotkeys
     fi
 
     info "Setting default shell to zsh"
