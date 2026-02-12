@@ -21,6 +21,11 @@
           "paths": [
             "/home/theo/Developer/agilex"
           ]
+        },
+        {
+          "paths": [
+            "/home/theo/Developer/sandbox"
+          ]
         }
       ]
     }
@@ -57,7 +62,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini"
+      "model": "oswe-vscode-prime"
     },
     "dock": "left"
   },

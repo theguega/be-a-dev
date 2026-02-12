@@ -48,3 +48,25 @@ alias dow="$HOME/Downloads"
 
 eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/zen.toml)"
 PATH="/home/theo/.cargo/bin/:$PATH"
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
+export PATH="/usr/local/bin:$PATH"
+export DEFAULT_USER="$(whoami)"export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
+export PATH="/usr/local/bin:$PATH"
+export DEFAULT_USER="$(whoami)"
+
+export EDITOR=/usr/bin/vi
+export VISUAL=/usr/bin/vi
+
+ARCH=$(uname -m)
+OS=$(uname -s)

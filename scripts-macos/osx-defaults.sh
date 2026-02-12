@@ -34,6 +34,7 @@ apply_system_defaults() {
     defaults write com.apple.dock autohide-delay -float 1000
     defaults write com.apple.dock show-recents -bool false
     defaults write com.apple.dock mru-spaces -bool false
+    defaults write com.apple.dock expose-group-apps -bool true
 
     # Mission Control
     defaults write com.apple.spaces spans-displays -bool false
