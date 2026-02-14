@@ -35,8 +35,23 @@ sketchybar --bar height=30 \
 
 # Left
 # source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
+# Use aerospace-based workspace handling instead of the old spaces script
+source "$ITEM_DIR/aerospace.sh"
 source "$ITEM_DIR/front_app.sh"
+
+# Create aerospace events (add these once)
+sketchybar --add event aerospace_workspace_change
+sketchybar --add event window_focus
+sketchybar --add event space_change
+
+# Invisible listener for aerospace events
+sketchybar --add item aerospace_listener left \
+  --set aerospace_listener script="$PLUGIN_DIR/aerospace_events.sh" \
+  --set aerospace_listener icon.drawing=off \
+  --set aerospace_listener label.drawing=off \
+  --set aerospace_listener background.drawing=off \
+  --set aerospace_listener width=0 \
+  --subscribe aerospace_listener aerospace_workspace_change window_focus space_change
 
 # Right
 source "$ITEM_DIR/clock.sh"

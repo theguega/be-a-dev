@@ -1,21 +1,25 @@
 #!/bin/bash
 
 CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
-source "$CONFIG_DIR/colors.sh"
-source "$CONFIG_DIR/helpers/icon_map.sh"
+# Prefer main variables (colors, fonts, paths) so we use your existing palette
+[ -f "$CONFIG_DIR/variables.sh" ] && source "$CONFIG_DIR/variables.sh"
+# Optional aerospace color overrides (non-fatal if missing)
+[ -f "$CONFIG_DIR/colors.sh" ] && source "$CONFIG_DIR/colors.sh"
+# Icon map helper (contains sketchybar-app-font mapping). Non-fatal if missing.
+[ -f "$CONFIG_DIR/helpers/icon_map.sh" ] && source "$CONFIG_DIR/helpers/icon_map.sh"
+
+# Ensure plugin/item dir fallbacks so click scripts resolve
+PLUGIN_DIR="${PLUGIN_DIR:-$HOME/.config/sketchybar/plugins}"
+ITEM_DIR="${ITEM_DIR:-$HOME/.config/sketchybar/items}"
 
 aerospace_spaces() {
   CURRENT_WORKSPACE=$(aerospace list-workspaces --focused)
-  # Get workspaces that have windows, plus always include current workspace
-  TEMP_WORKSPACES=()
-  for ws in $(aerospace list-workspaces --all); do
-    if [ "$(aerospace list-windows --workspace "$ws" --format '%{window-id}' | wc -l)" -gt 0 ] || [ "$ws" = "$CURRENT_WORKSPACE" ]; then
-      TEMP_WORKSPACES+=("$ws")
-    fi
+  # Always show workspaces 1..9 and highlight the focused one.
+  # This forces the bar to display every workspace number even if empty.
+  ACTIVE_WORKSPACES=()
+  for ws in {1..9}; do
+    ACTIVE_WORKSPACES+=("$ws")
   done
-  
-  # Sort workspaces numerically
-  IFS=$'\n' ACTIVE_WORKSPACES=($(printf '%s\n' "${TEMP_WORKSPACES[@]}" | sort -n))
 
   args=()
   # Remove existing aerospace workspace items
@@ -23,11 +27,11 @@ aerospace_spaces() {
     args+=(--remove aerospace.workspace.$i)
   done
 
-  # Add active workspaces with app icons
+  # Add active workspaces with app icons (as regular items so they always stay visible)
   for workspace in "${ACTIVE_WORKSPACES[@]}"; do
     # Get the first (focused) app in the workspace for the icon
     APP=$(aerospace list-windows --workspace "$workspace" --format '%{app-name}' | head -1)
-    
+
     # Get icon from the sketchybar-app-font
     if [ -n "$APP" ]; then
       # Use the app icon if available
@@ -53,16 +57,18 @@ aerospace_spaces() {
       HIGHLIGHT=off
     fi
 
-    # Add the workspace item with enhanced styling
+    # Add the workspace item as a regular item (not a space) so it always draws
     args+=(
-      --add space aerospace.workspace.$workspace left
-      --set aerospace.workspace.$workspace associated_display=1
+      --add item aerospace.workspace.$workspace left
+      --set aerospace.workspace.$workspace associated_display=active
       --set aerospace.workspace.$workspace icon="$ICON_RESULT"
+      --set aerospace.workspace.$workspace icon.drawing=on
       --set aerospace.workspace.$workspace icon.padding_left=8
       --set aerospace.workspace.$workspace icon.padding_right=4
       --set aerospace.workspace.$workspace icon.color="$ICON_COLOR"
       --set aerospace.workspace.$workspace icon.font="sketchybar-app-font:Regular:16.0"
       --set aerospace.workspace.$workspace label="$workspace"
+      --set aerospace.workspace.$workspace label.drawing=on
       --set aerospace.workspace.$workspace label.padding_left=4
       --set aerospace.workspace.$workspace label.padding_right=8
       --set aerospace.workspace.$workspace label.color="$TEXT_COLOR"

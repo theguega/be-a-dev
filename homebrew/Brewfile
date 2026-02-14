@@ -37,8 +37,8 @@ if OS.mac?
   cask "cursor"
   cask "linearmouse"
   cask "zed"
-  tap "FelixKratz/formulae"
-  brew "sketchybar"
+  # tap "FelixKratz/formulae"
+  # brew "sketchybar"
 end
 
 # VSCode extensions (installed via platform-specific scripts)
