@@ -57,8 +57,8 @@
   "agent": {
     "default_profile": "ask",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini",
+      "provider": "google",
+      "model": "gemini-3-pro-preview",
     },
     "dock": "left",
   },
@@ -98,16 +98,14 @@
       "format_on_save": "on",
       "formatter": [
         {
-          "code_action": "source.organizeImports.ruff"
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true,
+          },
         },
         {
-          "code_action": "source.fixAll.ruff"
+          "language_server": { "name": "ruff" },
         },
-        {
-          "language_server": {
-            "name": "ruff"
-          }
-        }
       ],
     },
   },

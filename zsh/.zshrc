@@ -59,6 +59,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias venv="source .venv/bin/activate"
 alias "??"="aichat -e"
+alias penv="source .venv/bin/activate"
 
 
 # Git
