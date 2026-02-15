@@ -37,6 +37,7 @@ if OS.mac?
   cask "cursor"
   cask "linearmouse"
   cask "zed"
+  cask "monitorcontrol"
   # tap "FelixKratz/formulae"
   # brew "sketchybar"
 end
