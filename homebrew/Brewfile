@@ -4,6 +4,13 @@ brew "readline"
 brew "llvm"
 brew "cmake"
 brew "tinymist"
+brew "poppler"
+brew "resvg"
+brew "imagemagick"
+brew "yazi"
+brew "p7zip"
+brew "jq"
+brew "ffmpeg"
 brew "fzf"
 brew "fd"
 brew "vim"
@@ -38,9 +45,4 @@ if OS.mac?
   cask "linearmouse"
   cask "zed"
   cask "monitorcontrol"
-  # tap "FelixKratz/formulae"
-  # brew "sketchybar"
 end
-
-# VSCode extensions (installed via platform-specific scripts)
-# These are handled by vscode.sh scripts on each platform

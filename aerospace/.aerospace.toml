@@ -15,9 +15,9 @@ inner.horizontal = 0
 inner.vertical = 0
 outer.bottom = 0
 outer.top = [
-  { monitor."main" = 30 },      # Matches MacBook screen (with the notch)
-  { monitor."secondary" = 45 }, # Applies to whichever display is currently "main"
-  45                            # Fallback default for all others
+  { monitor."main" = 0 },      # Matches MacBook screen (with the notch)
+  { monitor."secondary" = 0 }, # Applies to whichever display is currently "main"
+  0                            # Fallback default for all others
 ]
 outer.right = 0
 outer.left = 0

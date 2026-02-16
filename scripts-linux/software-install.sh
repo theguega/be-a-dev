@@ -29,10 +29,6 @@ install_applications() {
 
     # Install fonts
     install_fonts
-
-    # Install development tools
-    # install_dev_tools
-
     success "Applications installed"
 }
 
@@ -50,29 +46,6 @@ install_fonts() {
     rm "$font_zip"
 
     fc-cache -f -v
-}
-
-install_dev_tools() {
-    # Install zoxide
-    info "Installing zoxide..."
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-
-    # Install oh-my-posh
-    info "Installing oh-my-posh..."
-    curl -s https://ohmyposh.dev/install.sh | bash -s
-
-    # Install fzf
-    info "Installing fzf..."
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all
-
-    # Install Zsh plugins
-    info "Installing Zsh plugins..."
-    local zsh_dir="$HOME/.zsh"
-    mkdir -p "$zsh_dir"
-
-    git clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_dir/zsh-autosuggestions"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting "$zsh_dir/zsh-syntax-highlighting"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
