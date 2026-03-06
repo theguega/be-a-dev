@@ -39,6 +39,7 @@ if OS.mac?
   cask "ghostty"
   cask "aerospace"
   cask "visual-studio-code"
+  cask "devtoys"
   cask "vlc"
   cask "raycast"
   cask "onyx"

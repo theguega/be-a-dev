@@ -1,29 +1,45 @@
 {
+  "language_models": {
+    "ollama": {
+      "api_url": "http://cell-sophisticated-goat:11434"
+    }
+  },
+  "agent_servers": {},
   "edit_predictions": {
+    "mode": "subtle",
     "provider": "zed",
   },
   "ssh_connections": [
     {
-      "host": "polarbear",
+      "host": "cell-sophisticated-goat",
+      "username": "theo",
       "args": [],
       "projects": [
         {
-          "paths": ["/home/theo/Developer/agilex"],
-        },
-      ],
+          "paths": [
+            "/home/theo/Developer"
+          ]
+        }
+      ]
     },
     {
-      "host": "arm-xps-8960",
+      "host": "cell-sophisticated-goat",
+      "username": "theo",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "cell-sophisticated-goat",
+      "username": "theo",
       "args": [],
       "projects": [
         {
-          "paths": ["/home/theo/Developer/sandbox/siam/annotations"],
-        },
-        {
-          "paths": ["/home/theo/Developer/sandbox/siam/siam"],
-        },
-      ],
-    },
+          "paths": [
+            "/home/theo/Developer/agilex/./"
+          ]
+        }
+      ]
+    }
   ],
   "vim_mode": true,
   "icon_theme": "Catppuccin Latte",
@@ -39,7 +55,6 @@
   "buffer_line_height": "comfortable",
   "ui_font_family": "JetBrainsMono Nerd Font",
   "ui_font_weight": 400,
-  "soft_wrap": "editor_width",
   "ui_font_size": 16,
   "multi_cursor_modifier": "alt",
   "cursor_shape": "bar",
@@ -55,10 +70,18 @@
     "dock": "right",
   },
   "agent": {
-    "default_profile": "write",
+    "favorite_models": [
+      {
+        "provider": "ollama",
+        "model": "minimax-m2.5:cloud",
+        "enable_thinking": false
+      }
+    ],
+    "default_profile": "ask",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-5-mini",
+      "enable_thinking": false,
+      "provider": "ollama",
+      "model": "qwen2.5-coder:14b-instruct-q5_K_M",
     },
     "dock": "left",
   },
@@ -76,7 +99,7 @@
     "dock": "right",
   },
   "scrollbar": {
-    "git_diff": false,
+    "git_diff": true,
     "cursors": false,
     "search_results": true,
     "selected_symbol": false,
@@ -86,60 +109,32 @@
     "show": false,
   },
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "selections_menu": false,
     "agent_review": false,
     "code_actions": false,
     "quick_actions": false,
   },
+  "format_on_save": "on",
+  "use_on_type_format": true,
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
   "languages": {
     "Python": {
       "language_servers": ["ty", "ruff", "!pyright", "!basedpyright", "..."],
-      "format_on_save": "on",
       "formatter": [
         {
-          "code_action": "source.organizeImports.ruff"
+          "code_action": "source.organizeImports.ruff",
         },
         {
-          "code_action": "source.fixAll.ruff"
+          "code_action": "source.fixAll.ruff",
         },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ],
-    },
-  },
-  "lsp": {
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          "configurationPreference": "filesystemFirst",
-          "configuration": {
-            "format": {
-              "quote-style": "double",
-              "skip-magic-trailing-comma": false,
-            },
+            "name": "ruff",
           },
-          "codeAction": {
-            "disableRuleComment": { "enable": false },
-            "fixViolation": { "enable": true },
-          },
-          "lint": {
-            "select": ["E4", "E7", "E9", "F"],
-            "extendSelect": ["I"],
-            "enable": true,
-          },
-          "format": {
-            "preview": true,
-          },
-          "fixAll": true,
-          "organizeImports": true,
-          "showSyntaxErrors": true,
-          "lineLength": 100,
         },
-      },
+      ],
     },
   },
 }
