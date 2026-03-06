@@ -6,8 +6,8 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 export PATH="/usr/local/bin:$PATH"
 export DEFAULT_USER="$(whoami)"
-export EDITOR=/usr/local/bin/nvim
-export VISUAL=/usr/local/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
 export COLORTERM=truecolor
 export TERM=xterm-256color
 
