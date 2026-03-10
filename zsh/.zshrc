@@ -6,8 +6,10 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 export PATH="/usr/local/bin:$PATH"
 export DEFAULT_USER="$(whoami)"
-export EDITOR=/usr/local/bin/nvim
-export VISUAL=/usr/local/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
+export COLORTERM=truecolor
+export TERM=xterm-256color
 
 ARCH=$(uname -m)
 OS=$(uname -s)
@@ -110,3 +112,8 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
