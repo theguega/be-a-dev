@@ -1,8 +1,19 @@
 {
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+      "enable_thinking": false
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
   "language_models": {
     "ollama": {
-      "api_url": "http://cell-sophisticated-goat:11434"
-    }
+      "context_window": 1000000,
+      "api_url": "http://cell-sophisticated-goat:11434",
+    },
   },
   "agent_servers": {},
   "edit_predictions": {
@@ -16,38 +27,17 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/theo/Developer"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "cell-sophisticated-goat",
-      "username": "theo",
-      "args": [],
-      "projects": []
-    },
-    {
-      "host": "cell-sophisticated-goat",
-      "username": "theo",
-      "args": [],
-      "projects": [
+          "paths": ["/home/theo/Developer/agilex"],
+        },
         {
-          "paths": [
-            "/home/theo/Developer/agilex/./"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/theo/Developer/sandbox"],
+        },
+      ],
+    },
   ],
   "vim_mode": true,
   "icon_theme": "Catppuccin Latte",
-  "theme": {
-    "mode": "light",
-    "light": "Catppuccin Latte - No Italics",
-    "dark": "Catppuccin Latte - No Italics",
-  },
+  "theme": "Catppuccin Latte",
   "base_keymap": "VSCode",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 16,
@@ -69,42 +59,16 @@
   "project_panel": {
     "dock": "right",
   },
-  "agent": {
-    "favorite_models": [
-      {
-        "provider": "ollama",
-        "model": "minimax-m2.5:cloud",
-        "enable_thinking": false
-      }
-    ],
-    "default_profile": "ask",
-    "default_model": {
-      "enable_thinking": false,
-      "provider": "ollama",
-      "model": "qwen2.5-coder:14b-instruct-q5_K_M",
-    },
-    "dock": "left",
-  },
-  "terminal": {
-    "default_height": 200,
-    "default_width": 400,
-    "dock": "bottom",
-    "cursor_shape": "bar",
-    "toolbar": {
-      "breadcrumbs": false,
-    },
-    "working_directory": "current_project_directory",
-  },
   "git_panel": {
     "dock": "right",
   },
-  "scrollbar": {
-    "git_diff": true,
-    "cursors": false,
-    "search_results": true,
-    "selected_symbol": false,
-    "selected_text": false,
-  },
+  // "scrollbar": {
+  //   "git_diff": true,
+  //   "cursors": false,
+  //   "search_results": true,
+  //   "selected_symbol": false,
+  //   "selected_text": false,
+  // },
   "tab_bar": {
     "show": false,
   },
