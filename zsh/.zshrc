@@ -10,6 +10,12 @@ export EDITOR=nvim
 export VISUAL=nvim
 export COLORTERM=truecolor
 export TERM=xterm-256color
+export HISTFILE=~/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt inc_append_history
+setopt share_history
+
 
 ARCH=$(uname -m)
 OS=$(uname -s)
@@ -57,8 +63,6 @@ alias tree="eza --tree --level=2  --icons --git"
 alias cd="z"
 alias grep="rg"
 alias find="fd"
-alias vi="nvim"
-alias vim="nvim"
 alias venv="source .venv/bin/activate"
 alias "??"="aichat -e"
 alias imsee="kitty +kitten icat"
@@ -97,6 +101,8 @@ alias ......="cd ../../../../.."
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 
+
+
 . "$HOME/.local/bin/env"
 
 # Added by Antigravity
@@ -117,3 +123,5 @@ export PATH=$HOME/.local/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
