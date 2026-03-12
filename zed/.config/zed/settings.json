@@ -4,15 +4,15 @@
     "default_model": {
       "provider": "google",
       "model": "gemini-3-flash-preview",
-      "enable_thinking": false
+      "enable_thinking": false,
     },
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "language_models": {
     "ollama": {
       "context_window": 1000000,
-      "api_url": "http://cell-sophisticated-goat:11434",
+      "api_url": "http://server-sassy-meerkat:11434",
     },
   },
   "agent_servers": {},
@@ -21,6 +21,19 @@
     "provider": "zed",
   },
   "ssh_connections": [
+    {
+      "host": "server-sassy-meerkat",
+      "username": "theo",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/theo/Developer/agilex"],
+        },
+        {
+          "paths": ["/home/theo/Developer/sandbox"],
+        },
+      ],
+    },
     {
       "host": "cell-sophisticated-goat",
       "username": "theo",

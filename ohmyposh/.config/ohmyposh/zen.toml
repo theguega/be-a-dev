@@ -22,7 +22,7 @@ final_space = true
       style = 'plain'
       foreground = 'cyan'
       background = 'transparent'
-      template = '{{ if .SSHSession }}💻{{ end }} '
+      template = '{{ if .SSHSession }}{{ .HostName }} {{ end }}'
 
       [blocks.segments.properties]
         cache_duration = 'none'
