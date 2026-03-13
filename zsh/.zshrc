@@ -67,7 +67,7 @@ alias imsee="kitty +kitten icat"
 # Git
 alias gc="git commit -m"
 alias gca="git commit -a -m"
-alias gp="git push origin HEAD"
+alias gp="git push"
 alias gpu="git pull origin"
 alias gst="git status"
 alias glog="git log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -117,3 +117,5 @@ export PATH=$HOME/.local/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
