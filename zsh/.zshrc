@@ -101,27 +101,4 @@ alias ......="cd ../../../../.."
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 
-
-
 . "$HOME/.local/bin/env"
-
-# Added by Antigravity
-export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/theguega/.antigravity/antigravity/bin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-
-# bun completions
-[ -s "/Users/theguega/.bun/_bun" ] && source "/Users/theguega/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH=$HOME/.local/bin:$PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
