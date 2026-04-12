@@ -62,6 +62,8 @@ alias lsa="eza -l --icons --git -a --total-size"
 alias tree="eza --tree --level=2  --icons --git"
 alias cd="z"
 alias venv="source .venv/bin/activate"
+alias grep="rg"
+alias vi="nvim"
 alias "??"="aichat -e"
 alias imsee="kitty +kitten icat"
 

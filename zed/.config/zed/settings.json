@@ -2,9 +2,9 @@
   "agent": {
     "default_profile": "ask",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3-flash-preview",
-      "enable_thinking": false,
+      "provider": "openrouter",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "enable_thinking": true,
     },
     "favorite_models": [],
     "model_parameters": [],
