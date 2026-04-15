@@ -9,12 +9,6 @@
     "favorite_models": [],
     "model_parameters": [],
   },
-  "language_models": {
-    "ollama": {
-      "context_window": 1000000,
-      "api_url": "http://server-sassy-meerkat:11434",
-    },
-  },
   "agent_servers": {},
   "edit_predictions": {
     "mode": "subtle",
@@ -22,30 +16,20 @@
   },
   "ssh_connections": [
     {
-      "host": "server-sassy-meerkat",
+      "host": "meerkat",
       "username": "theo",
       "args": [],
       "projects": [
         {
-          "paths": ["/home/theo/Developer/agilex"],
-        },
-        {
-          "paths": ["/home/theo/Developer/sandbox"],
+          "paths": ["/home/theo/Developer/opalin"],
         },
       ],
     },
     {
-      "host": "cell-sophisticated-goat",
+      "host": "cell-fast-dog",
       "username": "theo",
       "args": [],
-      "projects": [
-        {
-          "paths": ["/home/theo/Developer/agilex"],
-        },
-        {
-          "paths": ["/home/theo/Developer/sandbox"],
-        },
-      ],
+      "projects": [],
     },
   ],
   "vim_mode": true,
