@@ -41,7 +41,6 @@ autoload -U colors && colors
 source ~/.keys/export_keys.sh
 
 # tools
-source $HOME/.local/bin/env
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -101,4 +100,4 @@ alias ......="cd ../../../../.."
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
 
-. "$HOME/.local/bin/env"
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
