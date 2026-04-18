@@ -27,8 +27,8 @@ xcode-select --install
 ### Clone
 
 ```zsh
-git clone git@github.com:theguega/dotfiles.git ~/.dotfiles
-# or HTTPS: git clone https://github.com/theguega/dotfiles.git ~/.dotfiles
+git clone git@github.com:theguega/.dotfiles.git ~/.dotfiles
+# or HTTPS: git clone https://github.com/theguega/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
