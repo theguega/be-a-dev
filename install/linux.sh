@@ -17,6 +17,23 @@ linux_ensure_brew_shellenv() {
     command -v brew >/dev/null 2>&1
 }
 
+# Homebrew's default Linux prefix is /home/linuxbrew/.linuxbrew. The official installer
+# refuses to continue when that path is not writable AND `sudo -n` fails — which is always
+# true in NONINTERACTIVE mode on a fresh user session (no password cached). Creating
+# /home/linuxbrew owned by the current user first avoids that abort.
+linux_prepare_homebrew_prefix_path() {
+    if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] || [[ -x "$HOME/.linuxbrew/bin/brew" ]]; then
+        return 0
+    fi
+    if [[ -d /home/linuxbrew ]] && [[ -w /home/linuxbrew ]]; then
+        return 0
+    fi
+    info "Preparing /home/linuxbrew for Linuxbrew (one-time sudo; password may be required)…"
+    sudo mkdir -p /home/linuxbrew
+    sudo chown "${USER}:$(id -gn)" /home/linuxbrew
+    sudo chmod 755 /home/linuxbrew
+}
+
 linux_gnome_prerequisites() {
     info "Updating apt and installing packages needed for GNOME setup..."
     sudo apt update
@@ -27,6 +44,7 @@ linux_gnome_prerequisites() {
 linux_install_prerequisites() {
     info "Installing Homebrew on Linux..."
     if ! command -v brew >/dev/null 2>&1; then
+        linux_prepare_homebrew_prefix_path
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         linux_ensure_brew_shellenv
     else
