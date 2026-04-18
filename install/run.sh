@@ -59,38 +59,37 @@ Examples:
 EOF
 }
 
-parse_install_args() {
-    local -n _cli=$1 _od=$2 _ui=$3 _gnome=$4
-    shift 4
+# Populated by parse_install_args / apply_install_arg_guards (bash 3.2 / macOS–compatible: no nameref).
 
-    _cli=false
-    _od=false
-    _ui=false
-    _gnome=false
+parse_install_args() {
+    _INSTALL_WANT_CLI=false
+    _INSTALL_WANT_DEFAULTS=false
+    _INSTALL_WANT_UI=false
+    _INSTALL_WANT_GNOME=false
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
             -a | --all)
-                _cli=true
-                _ui=true
+                _INSTALL_WANT_CLI=true
+                _INSTALL_WANT_UI=true
                 if [[ "$DOTFILES_OS" == darwin ]]; then
-                    _od=true
+                    _INSTALL_WANT_DEFAULTS=true
                 fi
                 if [[ "$DOTFILES_OS" == linux ]]; then
-                    _gnome=true
+                    _INSTALL_WANT_GNOME=true
                 fi
                 ;;
             -c | --cli)
-                _cli=true
+                _INSTALL_WANT_CLI=true
                 ;;
             -u | --ui)
-                _ui=true
+                _INSTALL_WANT_UI=true
                 ;;
             -d | --defaults)
-                _od=true
+                _INSTALL_WANT_DEFAULTS=true
                 ;;
             -g | --gnome)
-                _gnome=true
+                _INSTALL_WANT_GNOME=true
                 ;;
             *)
                 error "Unknown option: $1 (use --help)"
@@ -101,36 +100,34 @@ parse_install_args() {
 }
 
 apply_install_arg_guards() {
-    local -n _cli=$1 _od=$2 _ui=$3 _gnome=$4
-
-    if [[ "$DOTFILES_OS" == linux ]] && $_od; then
+    if [[ "$DOTFILES_OS" == linux ]] && $_INSTALL_WANT_DEFAULTS; then
         warning "Linux: ignoring --defaults (macOS only)"
-        _od=false
+        _INSTALL_WANT_DEFAULTS=false
     fi
-    if [[ "$DOTFILES_OS" == darwin ]] && $_gnome; then
+    if [[ "$DOTFILES_OS" == darwin ]] && $_INSTALL_WANT_GNOME; then
         warning "macOS: ignoring --gnome (Linux only)"
-        _gnome=false
+        _INSTALL_WANT_GNOME=false
     fi
 
     if is_ssh_session; then
-        if $_ui; then
+        if $_INSTALL_WANT_UI; then
             warning "SSH session: skipping --ui"
-            _ui=false
+            _INSTALL_WANT_UI=false
         fi
-        if $_gnome; then
+        if $_INSTALL_WANT_GNOME; then
             warning "SSH session: skipping --gnome"
-            _gnome=false
+            _INSTALL_WANT_GNOME=false
         fi
     fi
 
     if [[ "$DOTFILES_OS" == linux ]]; then
-        if ! linux_has_gui_session && $_ui; then
+        if ! linux_has_gui_session && $_INSTALL_WANT_UI; then
             warning "No GUI session detected: skipping --ui"
-            _ui=false
+            _INSTALL_WANT_UI=false
         fi
-        if { ! linux_has_gui_session || ! gnome_available; } && $_gnome; then
+        if { ! linux_has_gui_session || ! gnome_available; } && $_INSTALL_WANT_GNOME; then
             warning "GNOME/GUI not available: skipping --gnome"
-            _gnome=false
+            _INSTALL_WANT_GNOME=false
         fi
     fi
 }
@@ -154,8 +151,12 @@ main() {
     local want_gnome=false
 
     if [[ $# -gt 0 ]]; then
-        parse_install_args want_cli want_os_defaults want_ui want_gnome "$@"
-        apply_install_arg_guards want_cli want_os_defaults want_ui want_gnome
+        parse_install_args "$@"
+        apply_install_arg_guards
+        want_cli=$_INSTALL_WANT_CLI
+        want_os_defaults=$_INSTALL_WANT_DEFAULTS
+        want_ui=$_INSTALL_WANT_UI
+        want_gnome=$_INSTALL_WANT_GNOME
         info "Non-interactive: CLI=$want_cli macOS_defaults=$want_os_defaults UI=$want_ui GNOME=$want_gnome"
     else
         if is_ssh_session; then
