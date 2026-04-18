@@ -1,8 +1,7 @@
 #!/bin/bash
-# Utility functions for macOS dotfiles setup
+# Shared logging for dotfiles installer
 
-# Color definitions
-default_color=$(tput sgr 0)
+default_color=$(tput sgr0)
 red="$(tput setaf 1)"
 yellow="$(tput setaf 3)"
 green="$(tput setaf 2)"
@@ -23,4 +22,15 @@ error() {
 
 warning() {
     printf "%s==> %s%s\n" "$yellow" "$1" "$default_color"
+}
+
+run_with_progress() {
+    local message="$1"
+    local fn="$2"
+    info "$message..."
+    if "$fn"; then
+        success "$message completed"
+    else
+        error "$message failed"
+    fi
 }

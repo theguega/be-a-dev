@@ -1,136 +1,143 @@
 # Dotfiles
 
-This repository contains an installation script to download software and dotfiles for my personal development environment.
+Personal development environment: a cross-platform [install script](#installation) (macOS Intel, Apple Silicon, and Linux), [Homebrew](https://brew.sh/) for CLI tools, and [GNU Stow](https://www.gnu.org/software/stow/) for configuration symlinks.
 
 ![Neofetch](img/maci5.png)
 
-## Essential Tools
+## Essential tools
 
-- **Editor**: [Zed](https://zed.dev/) Zed is a next-generation code editor designed for high-performance collaboration with humans and AI.
-- **Terminal**: [Ghostty](https://ghostty.org/) 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU
-- **Shell Prompt**: [Oh My Posh](https://ohmyposh.dev/), a prompt theme engine for any shell written in Go
+- **Editor**: [Zed](https://zed.dev/)
+- **Terminal**: [Ghostty](https://ghostty.org/)
+- **Prompt**: [Oh My Posh](https://ohmyposh.dev/)
 - **Shell**: [Zsh](https://www.zsh.org/)
-- **Nvim**: [Nvim](https://neovim.io/) because I use Vim btw (sometimes)
+- **Editor (modal)**: [Neovim](https://neovim.io/)
 
 ## Setup
 
 ### Prerequisites
 
-#### macOS
-Install Apple's Command Line Tools (prerequisites for Git and Homebrew):
+**macOS:** [Xcode Command Line Tools](https://developer.apple.com/library/archive/technotes/tn2339/_index.html) (needed for Git and Homebrew):
+
 ```zsh
 xcode-select --install
 ```
 
-#### Linux (Ubuntu/Debian)
-No special prerequisites needed - the script handles everything.
+**Linux (Debian/Ubuntu):** No extra prep; the installer uses `apt` where needed.
+
+### Clone
+
+```zsh
+git clone git@github.com:theguega/dotfiles.git ~/.dotfiles
+# or HTTPS: git clone https://github.com/theguega/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+```
 
 ### Installation
 
-1. Clone repo into your Home directory.
+**Interactive** (prompts for each step; SSH sessions skip GUI/GNOME prompts automatically):
 
 ```zsh
-# Use SSH (if set up)...
-git clone git@github.com:theguega/be-a-dev.git ~/
-
-# ...or use HTTPS and switch remotes later.
-git clone https://github.com/theguega/be-a-dev.git ~/
-```
-
-2. Run the installation script.
-
-```zsh
-cd ~/be-a-dev
 ./install.sh
 ```
 
-The script will:
-- Detect your operating system (macOS/Linux)
-- Ask what you want to install/configure:
-  - **Applications**: CLI tools via Homebrew, GUI apps via platform-specific package managers
-  - **System defaults**: macOS system preferences or GNOME extensions/hotkeys
-  - **Symlinks**: Create symbolic links for dotfiles (with backup of existing files)
-- Install everything automatically
-- Set up your development environment
+**Non-interactive** (flags only; same SSH/GUI guards apply):
 
-3. Restart your computer to apply all changes.
+```zsh
+./install.sh --help          # options and examples
+./install.sh -a              # everything applicable on this OS
+./install.sh --cli --ui --defaults
+```
 
-4. Enjoy your new development environment!
+| Flag | Effect |
+|------|--------|
+| `-a` / `--all` | All options that apply on this platform |
+| `-c` / `--cli` | [Homebrew](https://brew.sh/) formulae from `homebrew/Brewfile` |
+| `-u` / `--ui` | macOS: casks · Linux: desktop `apt` packages + fonts |
+| `-d` / `--defaults` | macOS `defaults` (Finder, Dock, keyboard, …) |
+| `-g` / `--gnome` | Linux: GNOME extensions and hotkeys |
 
-## What's Installed
+The installer does **not** run Stow; it sets up software, optional OS/desktop tweaks, and creates `~/.zsh/local.zshenv` when needed (see [Zsh](#zsh)). Restart after large system or GNOME changes if something still looks stale.
 
-### Cross-Platform (via Homebrew)
-- **CLI Tools**: fzf, fd, ripgrep, eza, zoxide, neovim, tmux, cmake, gcc, etc.
-- **Shell**: zsh with oh-my-posh, zsh-autosuggestions, zsh-syntax-highlighting
-- **Development**: git, stow, ruby, python tools
+### Linking configs with Stow
 
-### macOS Only
-- **Editors**: Zed, VSCode, Cursor
-- **Terminal**: Ghostty
-- **Window Manager**: Aerospace
-- **Utilities**: Raycast, Onyx, HiddenBar, AppCleaner
-- **Fonts**: JetBrains Mono Nerd Font
-- **Media**: VLC
+[Stow](https://www.gnu.org/software/stow/) is installed via Homebrew (`brew "stow"` in the Brewfile). After `./install.sh`, symlink the packages you want from the repo into your home directory, for example:
 
-### Linux Only
-- **Editors**: VSCode
-- **Media**: VLC
-- **GNOME Extensions**: Tactile, Just Perfection, Blur My Shell, etc.
-- **Fonts**: JetBrains Mono Nerd Font (downloaded)
+```zsh
+cd ~/.dotfiles
+stow zsh git nvim zed ghostty
+```
+
+Use `stow -n …` first to preview. Host-specific shell snippets go in `~/.zsh/local.zshenv` and `~/.zsh/local.zshrc` (see below); they are not tracked in git.
+
+## Zsh
+
+| File | Role |
+|------|------|
+| `zsh/.zshenv` → `~/.zshenv` | Loaded for every zsh process: minimal `LANG` / `EDITOR`, then `~/.zsh/local.zshenv` if present |
+| `zsh/.zshrc` → `~/.zshrc` | Interactive only: history, completion, Homebrew-backed plugins, prompt, aliases |
+| `~/.zsh/local.zshenv` | Per-machine: `brew shellenv`, extra `PATH`, toolchain flags (installer can create this and add Homebrew) |
+| `~/.zsh/local.zshrc` | Per-machine interactive overrides |
+
+Optional: `~/.keys/export_keys.sh` is sourced from `.zshrc` when the file exists.
+
+## What gets installed
+
+Details live in `homebrew/Brewfile` and in `install/linux.sh` (desktop `apt` packages on Linux). At a glance:
+
+- **Cross-platform (Homebrew formulae):** `fzf`, `fd`, `ripgrep`, `eza`, `zoxide`, `neovim`, `stow`, `lazygit`, `bat`, `gcc`, `llvm`, `cmake`, and others listed in the Brewfile.
+- **macOS (casks):** Ghostty, Zed, Cursor, VS Code, Raycast, Aerospace, fonts, etc. (see Brewfile `if OS.mac?` block).
+- **Linux:** Same CLI formulae via Linuxbrew; desktop packages such as VLC and `gnome-shell-extension-manager` via `apt` when you choose the UI step; JetBrains Mono Nerd Font downloaded to `~/.local/share/fonts`.
 
 ## Customization
 
-### Adding New Dotfiles
+### New or updated dotfiles
 
-Dotfiles are managed using GNU Stow, which creates symbolic links. To add a new dotfile:
+1. Add files under the right package directory (e.g. `zsh/`, `git/`).
+2. Run `stow <package>` from the repository root so symlinks point at the new files.
 
-1. Create the file in the appropriate directory (e.g., `zsh/.zshrc` for shell config)
-2. The installation script will automatically create symlinks
+### New CLI packages
 
-### Adding Software
+Edit `homebrew/Brewfile`:
 
-#### CLI Tools (Cross-platform)
-Add to `homebrew/Brewfile`:
 ```ruby
 brew "package-name"
 ```
 
-#### GUI Applications
-- **macOS**: Add to `homebrew/Brewfile` with `cask "app-name"`
-- **Linux**: Add to `scripts-linux/software-install.sh` in the apt install section
+### macOS GUI apps
 
-### VSCode Extensions
-Extensions are managed in the platform-specific `vscode.sh` scripts. Add new extensions there.
+Add casks inside the `if OS.mac?` … `end` block in `homebrew/Brewfile`.
 
-## Project Structure
+### Linux desktop packages
+
+Edit the `apt install` list in `install/linux.sh` (function `linux_install_ui_packages`).
+
+## Project structure
 
 ```
-be-a-dev/
-├── install.sh                 # Main cross-platform installer
-├── scripts-macos/            # macOS-specific scripts
-│   ├── brew-install.sh       # Homebrew package installation
-│   ├── vscode.sh             # VSCode setup
-│   ├── osx-defaults.sh      # macOS system preferences
-│   └── utils.sh              # Shared utilities
-├── scripts-linux/            # Linux-specific scripts
-│   ├── software-install.sh   # Native software installation
-│   ├── vscode.sh             # VSCode setup
-│   ├── gnome-setup.sh       # GNOME configuration
-│   └── utils.sh              # Shared utilities
-├── homebrew/                 # Cross-platform package definitions
-│   └── Brewfile              # Homebrew packages (CLI + macOS casks)
-├── vscode-macos/             # VSCode settings for macOS
-├── vscode-linux/             # VSCode settings for Linux
-└── [other config dirs]       # Individual tool configurations
+.dotfiles/
+├── install.sh              # Entrypoint: sources install/run.sh
+├── install/
+│   ├── run.sh              # Prompts or CLI flags, dispatches macOS/Linux
+│   ├── macos.sh            # Xcode CLT, Homebrew, Brewfile splits, defaults
+│   ├── linux.sh            # apt, Linuxbrew, Brewfile, apt UI, GNOME
+│   └── lib/                # utils, env detection, Brewfile helpers, ~/.zsh/local.zshenv
+├── homebrew/
+│   └── Brewfile            # Formulae + macOS casks
+├── zsh/                    # .zshenv, .zshrc (stow as `zsh`)
+├── git/                    # git config (stow as `git`)
+├── nvim/                   # Neovim (stow as `nvim`)
+├── zed/                    # Zed (stow as `zed`)
+├── ghostty/                # Ghostty (stow as `ghostty`)
+├── ohmyposh/               # Oh My Posh theme (stow as `ohmyposh`)
+└── …                       # Other tool-specific trees
 ```
 
 ## Troubleshooting
 
-- **Permission issues**: Make sure scripts are executable (`chmod +x install.sh`)
-- **Homebrew issues**: On macOS, ensure Xcode Command Line Tools are installed
-- **VSCode extensions**: Run the vscode.sh script manually if extensions fail to install
-- **Symlinks**: Existing files are backed up automatically
+- **Permission denied:** `chmod +x install.sh`
+- **Homebrew on macOS:** Ensure Command Line Tools are installed; on Apple Silicon vs Intel, `brew` lives under `/opt/homebrew` or `/usr/local` (handled via `~/.zsh/local.zshenv`).
+- **Empty PATH in a new shell:** Ensure `~/.zsh/local.zshenv` contains the right `eval "$(…/brew shellenv)"` for that machine, or re-run the installer’s relevant steps.
 
 ## Inspiration
 
-https://github.com/hendrikmi/dotfiles/tree/main
+[hendrikmi/dotfiles](https://github.com/hendrikmi/dotfiles/tree/main)
