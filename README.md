@@ -111,6 +111,23 @@ Add casks inside the `if OS.mac?` … `end` block in `homebrew/Brewfile`.
 
 Edit the `apt install` list in `install/linux.sh` (function `linux_install_ui_packages`).
 
+## Testing the installer
+
+**Docker (Linux, CLI-only):** [Docker](https://docs.docker.com/get-docker/) can run automated checks of `./install.sh -c` (Homebrew formulae, no GUI) in parallel. Containers are **Linux only** — there is no supported way to run macOS inside Docker, so exercise the macOS installer on a **real Mac** when you need to validate Intel vs Apple Silicon.
+
+```zsh
+cd ~/.dotfiles
+./test/parallel-server-install.sh
+```
+
+This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, Debian bookworm slim): each copies the repo into the container, creates a non-root user, and runs `./install.sh -c`. Logs are written under a temporary directory; the script prints the path when it exits.
+
+**Notes:**
+
+- Typical **amd64** Linux hosts cannot run `linux/arm64` images without [QEMU / binfmt](https://github.com/multiarch/qemu-user-static); the script uses three **amd64** images instead of mixing architectures.
+- Minimal images may not include `/bin/zsh`, so the installer may skip `chsh` — that is expected in this test.
+- For **macOS**, run `./install.sh -c` (or other flags) directly on the machine; compare Intel and Apple Silicon by running it on each hardware once.
+
 ## Project structure
 
 ```
@@ -129,6 +146,7 @@ Edit the `apt install` list in `install/linux.sh` (function `linux_install_ui_pa
 ├── zed/                    # Zed (stow as `zed`)
 ├── ghostty/                # Ghostty (stow as `ghostty`)
 ├── ohmyposh/               # Oh My Posh theme (stow as `ohmyposh`)
+├── test/                   # Docker parallel test for Linux CLI install (optional)
 └── …                       # Other tool-specific trees
 ```
 

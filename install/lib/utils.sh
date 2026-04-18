@@ -1,11 +1,19 @@
 #!/bin/bash
 # Shared logging for dotfiles installer
 
-default_color=$(tput sgr0)
-red="$(tput setaf 1)"
-yellow="$(tput setaf 3)"
-green="$(tput setaf 2)"
-blue="$(tput setaf 4)"
+if [[ "${TERM:-}" == dumb ]] || [[ "${TERM:-}" == unknown ]] || ! tput sgr0 >/dev/null 2>&1; then
+    default_color=""
+    red=""
+    yellow=""
+    green=""
+    blue=""
+else
+    default_color=$(tput sgr0)
+    red="$(tput setaf 1)"
+    yellow="$(tput setaf 3)"
+    green="$(tput setaf 2)"
+    blue="$(tput setaf 4)"
+fi
 
 info() {
     printf "%s==> %s%s\n" "$blue" "$1" "$default_color"
