@@ -59,13 +59,6 @@
   "git_panel": {
     "dock": "right",
   },
-  // "scrollbar": {
-  //   "git_diff": true,
-  //   "cursors": false,
-  //   "search_results": true,
-  //   "selected_symbol": false,
-  //   "selected_text": false,
-  // },
   "tab_bar": {
     "show": false,
   },
