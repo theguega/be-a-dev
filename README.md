@@ -153,6 +153,7 @@ This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, De
 ## Troubleshooting
 
 - **Permission denied:** `chmod +x install.sh`
+- **Linux: “Insufficient permissions to install Homebrew to /home/linuxbrew/.linuxbrew”:** The installer runs Homebrew’s script in non-interactive mode, which uses `sudo -n` and fails before you can enter a password. This repo runs **`sudo mkdir` + `chown` on `/home/linuxbrew` first** so the default prefix is user-writable. You still need normal `sudo` access once; if you cannot use sudo, install Homebrew to `$HOME/.linuxbrew` [manually](https://docs.brew.sh/Installation#alternative-installs) and add `eval "$(…/brew shellenv)"` to `~/.zsh/local.zshenv`.
 - **Homebrew on macOS:** Ensure Command Line Tools are installed; on Apple Silicon vs Intel, `brew` lives under `/opt/homebrew` or `/usr/local` (handled via `~/.zsh/local.zshenv`).
 - **Empty PATH in a new shell:** Ensure `~/.zsh/local.zshenv` contains the right `eval "$(…/brew shellenv)"` for that machine, or re-run the installer’s relevant steps.
 
