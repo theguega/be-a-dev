@@ -1,6 +1,8 @@
 # ~/.zshrc — interactive shells only.
 [[ -o interactive ]] || return
 
+bindkey -e
+
 # ── history ─────────────────────────────────────────────────
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE=100000 SAVEHIST=100000
@@ -27,6 +29,7 @@ fi
 
 command -v oh-my-posh >/dev/null 2>&1 && eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
 if [[ -n "$_brew_prefix" && -r "$_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
