@@ -73,22 +73,4 @@
   "use_on_type_format": true,
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": true,
-  "languages": {
-    "Python": {
-      "language_servers": ["ty", "ruff", "!pyright", "!basedpyright", "..."],
-      "formatter": [
-        {
-          "code_action": "source.organizeImports.ruff",
-        },
-        {
-          "code_action": "source.fixAll.ruff",
-        },
-        {
-          "language_server": {
-            "name": "ruff",
-          },
-        },
-      ],
-    },
-  },
 }
