@@ -117,7 +117,7 @@ Edit the `apt install` list in `install/linux.sh` (function `linux_install_ui_pa
 
 ```zsh
 cd ~/.dotfiles
-./test/parallel-server-install.sh
+./installation-tests/parallel-server-install.sh
 ```
 
 This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, Debian bookworm slim): each copies the repo into the container, creates a non-root user, and runs `./install.sh -c`. Logs are written under a temporary directory; the script prints the path when it exits.
