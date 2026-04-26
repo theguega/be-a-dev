@@ -59,6 +59,7 @@ alias gdiff='git diff' gco='git checkout' gb='git branch' gba='git branch -a'
 alias gadd='git add' ga='git add -p' gcoall='git checkout -- .' gr='git remote' gre='git reset'
 
 alias dco='docker compose' dps='docker ps' dpa='docker ps -a' dl='docker ps -l -q' dx='docker exec -it'
+alias httpserv='python -m http.server 8000'
 
 alias ..='cd ..' ...='cd ../..' ....='cd ../../..' .....='cd ../../../..' ......='cd ../../../../..'
 alias doc="$HOME/Documents" dow="$HOME/Downloads"
