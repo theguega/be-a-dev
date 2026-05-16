@@ -1,4 +1,7 @@
 {
+  "tabs": {
+    "git_status": false,
+  },
   "agent": {
     "default_profile": "ask",
     "default_model": {
@@ -9,6 +12,7 @@
     "favorite_models": [],
     "model_parameters": [],
   },
+  "max_tabs": 1,
   "agent_servers": {},
   "edit_predictions": {
     "mode": "subtle",
@@ -73,4 +77,9 @@
   "use_on_type_format": true,
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": true,
+  "languages": {
+    "Python": {
+      "format_on_save": "on",
+    },
+  },
 }

@@ -82,6 +82,7 @@ linux_install_ui_packages() {
         vlc \
         gnome-shell-extension-manager \
         pipx
+    sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install ulauncher
 
     linux_install_fonts
     success "Desktop packages installed"

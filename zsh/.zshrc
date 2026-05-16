@@ -9,7 +9,9 @@ export HISTSIZE=100000 SAVEHIST=100000
 setopt inc_append_history share_history hist_ignore_dups
 
 # ── completion ──────────────────────────────────────────────
-autoload -Uz compinit && compinit -C
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit
+compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 autoload bashcompinit 2>/dev/null && bashcompinit 2>/dev/null
 
@@ -63,6 +65,8 @@ alias httpserv='python -m http.server 8000'
 
 alias ..='cd ..' ...='cd ../..' ....='cd ../../..' .....='cd ../../../..' ......='cd ../../../../..'
 alias doc="$HOME/Documents" dow="$HOME/Downloads"
+
+alias wts='wt switch'
 
 # ── host / machine overrides ────────────────────────────────
 [[ -r ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
