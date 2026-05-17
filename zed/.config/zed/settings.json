@@ -1,44 +1,11 @@
 {
-  "tabs": {
-    "git_status": false,
-  },
-  "agent": {
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "openrouter",
-      "model": "nvidia/nemotron-3-super-120b-a12b:free",
-      "enable_thinking": true,
-    },
-    "favorite_models": [],
-    "model_parameters": [],
-  },
-  "max_tabs": 1,
-  "agent_servers": {},
   "edit_predictions": {
     "mode": "subtle",
     "provider": "zed",
   },
-  "ssh_connections": [
-    {
-      "host": "meerkat",
-      "username": "theo",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/theo/Developer/opalin"],
-        },
-      ],
-    },
-    {
-      "host": "cell-fast-dog",
-      "username": "theo",
-      "args": [],
-      "projects": [],
-    },
-  ],
   "vim_mode": true,
   "icon_theme": "Catppuccin Latte",
-  "theme": "Catppuccin Latte",
+  "theme": "Catppuccin Latte (Blur) [Heavy]",
   "base_keymap": "VSCode",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 16,
@@ -77,9 +44,31 @@
   "use_on_type_format": true,
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": true,
+  "lsp": {
+    "tinymist": {
+      "initialization_options": {
+        "preview": {
+          // background preview : http://127.0.0.1:23635
+          "background": {
+            "enabled": true,
+          },
+        },
+      },
+    },
+  },
   "languages": {
+    "Typst": {
+      "soft_wrap": "none",
+    },
     "Python": {
-      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": true,
+      },
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
     },
   },
 }

@@ -67,6 +67,7 @@ alias ..='cd ..' ...='cd ../..' ....='cd ../../..' .....='cd ../../../..' ......
 alias doc="$HOME/Documents" dow="$HOME/Downloads"
 
 alias wts='wt switch'
+alias web-to-md='bunx defuddle parse'
 
 # ── host / machine overrides ────────────────────────────────
 [[ -r ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
