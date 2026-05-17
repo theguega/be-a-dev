@@ -104,3 +104,26 @@ obsidian dev:mobile on
 ```
 
 Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+
+
+### The Obsidian Flavored Markdown
+
+Obsidian strives for maximum capability without breaking any existing formats. As a result, we use a combination of flavors of Markdown.
+
+Obsidian supports CommonMark, GitHub Flavored Markdown, and LaTeX.
+
+Supported Markdown extensions 
+Syntax	Description
+[[Link]]	Internal links
+![[Link]]	Embed files
+![[Link#^id]]	Block references
+^id	Defining a block
+[^id]	Footnotes
+%%Text%%	Comments
+~~Text~~	Strikethroughs
+==Text==	Highlights
+```	Code blocks
+- [ ]	Incomplete task
+- [x]	Completed task
+> [!note]	Callouts
+(see link)	Tables
