@@ -48,12 +48,21 @@
   "lsp": {
     "tinymist": {
       "initialization_options": {
+        // Enable background preview
+        // Server will be running on http://127.0.0.1:23635
         "preview": {
-          // background preview : http://127.0.0.1:23635
           "background": {
             "enabled": true,
           },
         },
+      },
+
+      "settings": {
+        // Compile on save
+        // This will compile a PDF for the `main.typ` file in the project root.
+        "exportPdf": "onSave",
+        "outputPath": "$root/$name",
+        "projectResolution": "lockDatabase",
       },
     },
   },
