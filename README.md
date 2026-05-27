@@ -37,15 +37,15 @@ cd ~/.dotfiles
 **Interactive** (prompts for each step; SSH sessions skip GUI/GNOME prompts automatically):
 
 ```zsh
-./install.sh
+./setup.sh
 ```
 
 **Non-interactive** (flags only; same SSH/GUI guards apply):
 
 ```zsh
-./install.sh --help          # options and examples
-./install.sh -a              # everything applicable on this OS
-./install.sh --cli --ui --defaults
+./setup.sh --help          # options and examples
+./setup.sh -a              # everything applicable on this OS
+./setup.sh --cli --ui --defaults
 ```
 
 | Flag | Effect |
@@ -60,7 +60,7 @@ The installer does **not** run Stow; it sets up software, optional OS/desktop tw
 
 ### Linking configs with Stow
 
-[Stow](https://www.gnu.org/software/stow/) is installed via Homebrew (`brew "stow"` in the Brewfile). After `./install.sh`, symlink the packages you want from the repo into your home directory, for example:
+[Stow](https://www.gnu.org/software/stow/) is installed via Homebrew (`brew "stow"` in the Brewfile). After `./setup.sh`, symlink the packages you want from the repo into your home directory, for example:
 
 ```zsh
 cd ~/.dotfiles
@@ -113,26 +113,26 @@ Edit the `apt install` list in `install/linux.sh` (function `linux_install_ui_pa
 
 ## Testing the installer
 
-**Docker (Linux, CLI-only):** [Docker](https://docs.docker.com/get-docker/) can run automated checks of `./install.sh -c` (Homebrew formulae, no GUI) in parallel. Containers are **Linux only** — there is no supported way to run macOS inside Docker, so exercise the macOS installer on a **real Mac** when you need to validate Intel vs Apple Silicon.
+**Docker (Linux, CLI-only):** [Docker](https://docs.docker.com/get-docker/) can run automated checks of `./setup.sh -c` (Homebrew formulae, no GUI) in parallel. Containers are **Linux only** — there is no supported way to run macOS inside Docker, so exercise the macOS installer on a **real Mac** when you need to validate Intel vs Apple Silicon.
 
 ```zsh
 cd ~/.dotfiles
-./installation-tests/parallel-server-install.sh
+./installation-tests/parallel-server-setup.sh
 ```
 
-This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, Debian bookworm slim): each copies the repo into the container, creates a non-root user, and runs `./install.sh -c`. Logs are written under a temporary directory; the script prints the path when it exits.
+This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, Debian bookworm slim): each copies the repo into the container, creates a non-root user, and runs `./setup.sh -c`. Logs are written under a temporary directory; the script prints the path when it exits.
 
 **Notes:**
 
 - Typical **amd64** Linux hosts cannot run `linux/arm64` images without [QEMU / binfmt](https://github.com/multiarch/qemu-user-static); the script uses three **amd64** images instead of mixing architectures.
 - Minimal images may not include `/bin/zsh`, so the installer may skip `chsh` — that is expected in this test.
-- For **macOS**, run `./install.sh -c` (or other flags) directly on the machine; compare Intel and Apple Silicon by running it on each hardware once.
+- For **macOS**, run `./setup.sh -c` (or other flags) directly on the machine; compare Intel and Apple Silicon by running it on each hardware once.
 
 ## Project structure
 
 ```
 .dotfiles/
-├── install.sh              # Entrypoint: sources install/run.sh
+├── setup.sh              # Entrypoint: sources install/run.sh
 ├── install/
 │   ├── run.sh              # Prompts or CLI flags, dispatches macOS/Linux
 │   ├── macos.sh            # Xcode CLT, Homebrew, Brewfile splits, defaults
@@ -152,7 +152,7 @@ This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, De
 
 ## Troubleshooting
 
-- **Permission denied:** `chmod +x install.sh`
+- **Permission denied:** `chmod +x setup.sh`
 - **Linux: “Insufficient permissions to install Homebrew to /home/linuxbrew/.linuxbrew”:** The installer runs Homebrew’s script in non-interactive mode, which uses `sudo -n` and fails before you can enter a password. This repo runs **`sudo mkdir` + `chown` on `/home/linuxbrew` first** so the default prefix is user-writable. You still need normal `sudo` access once; if you cannot use sudo, install Homebrew to `$HOME/.linuxbrew` [manually](https://docs.brew.sh/Installation#alternative-installs) and add `eval "$(…/brew shellenv)"` to `~/.zsh/local.zshenv`.
 - **Homebrew on macOS:** Ensure Command Line Tools are installed; on Apple Silicon vs Intel, `brew` lives under `/opt/homebrew` or `/usr/local` (handled via `~/.zsh/local.zshenv`).
 - **Empty PATH in a new shell:** Ensure `~/.zsh/local.zshenv` contains the right `eval "$(…/brew shellenv)"` for that machine, or re-run the installer’s relevant steps.
