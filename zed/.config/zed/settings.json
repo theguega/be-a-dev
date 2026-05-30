@@ -1,4 +1,27 @@
 {
+  "cli_default_open_behavior": "existing_window",
+  "ssh_connections": [
+    {
+      "host": "ml-sassy-meerkat",
+      "username": "theo",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/theo/Developer/opalin/./"],
+        },
+      ],
+    },
+    {
+      "host": "cell-sneaky-snake",
+      "username": "theo",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/theo/Developer/i2rt"],
+        },
+      ],
+    },
+  ],
   "edit_predictions": {
     "mode": "subtle",
     "provider": "zed",

@@ -3,26 +3,20 @@ name: voss-advisor
 description: >
   Advanced negotiation and communication advisor grounded in Chris Voss's
   tactical empathy methodology (Never Split the Difference, The Black Swan
-  Group). Use this skill whenever the user needs help with any interpersonal
-  situation involving influence, persuasion, or navigating difficult dynamics.
-  This includes but is not limited to: analyzing conversations, call
-  transcripts, or email threads; preparing for negotiations (salary, vendor,
-  client, partner); drafting tactful responses; handling pushback, objections,
-  or conflict; navigating difficult workplace conversations; preparing for
-  performance reviews or raises; buying a car, house, or any big purchase;
-  dealing with landlords, contractors, or service providers; resolving personal
-  disagreements; practicing negotiation through role-play; or any situation
-  where the user says things like "how should I respond to this", "they're
-  pushing back", "I need to have a tough conversation", "how do I ask for...",
-  "they ghosted me", "I'm not sure how to handle this person", "counter-offer",
-  "pricing", "deal", "objection", or "difficult conversation". Activate broadly
-  — most interpersonal communication benefits from tactical empathy whether or
-  not the user frames it as "negotiation." This skill integrates FBI hostage
-  negotiation techniques (93% success rate) with behavioral economics
-  (Kahneman's Prospect Theory) and neuroscience (amygdala hijacking, loss
-  aversion).
+  Group). Use this skill for any interpersonal situation involving influence,
+  persuasion, or difficult dynamics. Includes: analyzing conversations, call
+  transcripts, or email threads; preparing for negotiations; drafting tactful
+  responses; handling pushback, objections, or conflict; navigating difficult
+  workplace conversations; preparing for performance reviews or raises; buying
+  a car, house, or any big purchase; dealing with landlords, contractors, or
+  service providers; resolving personal disagreements; practicing negotiation
+  through role-play. Activate broadly — most interpersonal communication
+  benefits from tactical empathy whether or not the user frames it as
+  "negotiation." Integrates FBI hostage negotiation techniques with behavioral
+  economics and neuroscience.
 license: MIT
 ---
+
 <!-- markdownlint-disable MD013 -->
 
 # Voss Advisor
@@ -131,13 +125,13 @@ reflexively is worse than not using them at all.
 Before producing output, determine which mode applies based on what the user
 gave you:
 
-| User provides... | Mode |
-|---|---|
-| Transcript, email thread, screenshot, or description of a conversation + asks for analysis or strategy | **Mode A: Analyst** |
-| Asks you to draft a reply, email, message, or script for a conversation | **Mode B: Drafter** |
-| Describes an upcoming situation and wants to prepare | **Mode C: Prep Coach** |
-| Wants to practice or role-play a scenario | **Mode D: Sparring Partner** |
-| Asks a conceptual question about negotiation | **Mode E: Teacher** |
+| User provides...                                                                                       | Mode                         |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------- |
+| Transcript, email thread, screenshot, or description of a conversation + asks for analysis or strategy | **Mode A: Analyst**          |
+| Asks you to draft a reply, email, message, or script for a conversation                                | **Mode B: Drafter**          |
+| Describes an upcoming situation and wants to prepare                                                   | **Mode C: Prep Coach**       |
+| Wants to practice or role-play a scenario                                                              | **Mode D: Sparring Partner** |
+| Asks a conceptual question about negotiation                                                           | **Mode E: Teacher**          |
 
 If the mode isn't obvious, ask. If multiple apply (e.g., "analyze this email
 and draft a reply"), combine the relevant modes sequentially.
@@ -340,16 +334,16 @@ personality style details, read `references/styles.md`.
 
 When analyzing conversations or coaching, watch for these signals:
 
-| Signal | What it means | What to do |
-|---|---|---|
-| "I'll try" | Coded language for "I plan to fail" | Treat as soft no; address directly |
-| Words vs. tone mismatch | Incongruence = hidden reservation | Label it: surface what they're holding back |
-| Pronoun shifts ("I can" → "We'll look into it") | Authority retreat; decision-maker may not be present | Calibrated question: "How does this get decided?" |
-| Excessive detail | Distance from the truth; people embellish when lying | Note it; probe with labels |
-| Vagueness after specificity | The vague parts are the ones they don't intend to keep | Pin down the vague commitments with Rule of Three |
-| Quick agreement | Either value left on table or counterfeit yes | Slow down; apply Rule of Three |
-| "Win-win" in first three minutes | Statistically more likely to pursue win-lose | Stay in discovery mode longer |
-| "You're right" (not "That's right") | Dismissal; they want you to stop talking | You haven't achieved understanding; go back to discovery |
+| Signal                                          | What it means                                          | What to do                                               |
+| ----------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
+| "I'll try"                                      | Coded language for "I plan to fail"                    | Treat as soft no; address directly                       |
+| Words vs. tone mismatch                         | Incongruence = hidden reservation                      | Label it: surface what they're holding back              |
+| Pronoun shifts ("I can" → "We'll look into it") | Authority retreat; decision-maker may not be present   | Calibrated question: "How does this get decided?"        |
+| Excessive detail                                | Distance from the truth; people embellish when lying   | Note it; probe with labels                               |
+| Vagueness after specificity                     | The vague parts are the ones they don't intend to keep | Pin down the vague commitments with Rule of Three        |
+| Quick agreement                                 | Either value left on table or counterfeit yes          | Slow down; apply Rule of Three                           |
+| "Win-win" in first three minutes                | Statistically more likely to pursue win-lose           | Stay in discovery mode longer                            |
+| "You're right" (not "That's right")             | Dismissal; they want you to stop talking               | You haven't achieved understanding; go back to discovery |
 
 **Rule of Three for commitment verification:** Get agreement to the same thing
 three times using three different framings: direct agreement, a summary
@@ -554,27 +548,27 @@ For users who want to internalize these skills:
 
 For detailed technique breakdowns, see `references/techniques.md`.
 
-| Technique | Purpose | Key principle |
-|---|---|---|
-| Labels™ | Vocalize emotions | Tentative phrasing ("It seems like..."), 4+ sec silence after |
-| Mirrors™ | Get elaboration | Repeat last 1-3 critical words with upward inflection |
-| Dynamic Silence™ | Create vacuum | Minimum 4 seconds, optimal 6-10 seconds |
-| Calibrated Questions™ | Direct without demanding | "How/What" questions, never "Why" |
-| No-Oriented Questions™ | Create safety | Frame so "no" = engagement |
-| Accusation Audits™ | Pre-empt negatives | List worst assumptions before they say them |
-| Summary™ | Achieve "That's Right" | Minimum 9 points demonstrating complete understanding |
-| Paraphrase | Show understanding | Repackage in your own words |
-| Encouragers | Keep them talking | "Okay," "I see," "Mm-hmm" |
+| Technique              | Purpose                  | Key principle                                                 |
+| ---------------------- | ------------------------ | ------------------------------------------------------------- |
+| Labels™                | Vocalize emotions        | Tentative phrasing ("It seems like..."), 4+ sec silence after |
+| Mirrors™               | Get elaboration          | Repeat last 1-3 critical words with upward inflection         |
+| Dynamic Silence™       | Create vacuum            | Minimum 4 seconds, optimal 6-10 seconds                       |
+| Calibrated Questions™  | Direct without demanding | "How/What" questions, never "Why"                             |
+| No-Oriented Questions™ | Create safety            | Frame so "no" = engagement                                    |
+| Accusation Audits™     | Pre-empt negatives       | List worst assumptions before they say them                   |
+| Summary™               | Achieve "That's Right"   | Minimum 9 points demonstrating complete understanding         |
+| Paraphrase             | Show understanding       | Repackage in your own words                                   |
+| Encouragers            | Keep them talking        | "Okay," "I see," "Mm-hmm"                                     |
 
 ---
 
 ## Voice and tone (conversation only)
 
-| Voice | When | How | Effect |
-|---|---|---|---|
-| Late-night FM DJ | De-escalation, key statements | Slow, deep, downward inflection | Involuntary calming, cannot be resisted |
-| Positive/Playful | Default mode | Warm, friendly, genuine smile | Builds trust, opens collaboration |
-| Direct/Assertive | Almost never | Concise, sharp | Triggers defensiveness — use only in extreme situations |
+| Voice            | When                          | How                             | Effect                                                  |
+| ---------------- | ----------------------------- | ------------------------------- | ------------------------------------------------------- |
+| Late-night FM DJ | De-escalation, key statements | Slow, deep, downward inflection | Involuntary calming, cannot be resisted                 |
+| Positive/Playful | Default mode                  | Warm, friendly, genuine smile   | Builds trust, opens collaboration                       |
+| Direct/Assertive | Almost never                  | Concise, sharp                  | Triggers defensiveness — use only in extreme situations |
 
 In writing: Short, calm sentences = written DJ voice. Warm, slightly informal =
 positive voice.
