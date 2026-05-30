@@ -4,3 +4,5 @@ zed/.config/zed/prompts/
 tmux/.config/tmux/plugins
 vscode-linux/.config/Code/User/**
 zed/.config/zed/conversations
+agents/.cursor/*
+!agents/.cursor/rules/AGENTS.md
