@@ -57,7 +57,7 @@ linux_install_prerequisites() {
     sudo apt update && sudo apt upgrade -y
 
     info "Installing basic build tools..."
-    sudo apt install -y build-essential curl git unzip
+    sudo apt install -y build-essential curl git unzip zsh
 
     success "Prerequisites installed"
 }

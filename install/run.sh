@@ -40,7 +40,7 @@ prompt_yes_no() {
 
 show_install_help() {
     cat <<'EOF'
-Usage: ./install.sh [OPTION]...
+Usage: ./setup.sh [OPTION]...
 
 With no arguments, runs interactive prompts (SSH-aware).
 
@@ -53,9 +53,9 @@ Options:
   -h, --help      Show this help
 
 Examples:
-  ./install.sh
-  ./install.sh -a
-  ./install.sh --cli --ui --defaults
+  ./setup.sh
+  ./setup.sh -a
+  ./setup.sh --cli --ui --defaults
 EOF
 }
 
