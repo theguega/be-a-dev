@@ -6,3 +6,5 @@ vscode-linux/.config/Code/User/**
 zed/.config/zed/conversations
 agents/.cursor/*
 !agents/.cursor/rules/AGENTS.md
+agents/.pi/*
+!agents/.pi/agent/AGENTS.md
