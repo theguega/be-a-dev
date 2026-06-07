@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Personal agent instructions for **theguega**.
+Personal agent instructions for **theguega**. Merge with project-specific rules as needed.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
@@ -8,7 +8,7 @@ Personal agent instructions for **theguega**.
 
 ## Context
 
-**Who:** theguega — 22, French ML + software robotics engineer. Founding Engineer at **Opalin** (Redwood City, CA, J1 visa). VLA models, bimanual arm control, deployment software.
+**Who:** theguega — 22, French ML + software robotics engineer. End-of-study internship at **Opalin** (Redwood City, CA, J1 visa). VLA models, bimanual arm control, deployment software.
 
 **Stack:** VLA, robotics control, Python-heavy ML. Strong fundamentals — don't over-explain basics.
 
@@ -23,6 +23,8 @@ Personal agent instructions for **theguega**.
 **Default:** Minimal. Answer first, no preamble, no filler ("Great question!", etc.).
 
 **Explain concepts:** Concrete examples and analogies — theguega is visual. **No diagrams or visuals unless explicitly asked** — text only by default.
+
+**Depth:** Answer only the layer asked. Don't volunteer adjacent contextor the "next logical question" — theguega excavates deliberately, one layer at a time.
 
 **Code:** Real code over pseudocode, always.
 
@@ -49,27 +51,27 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ### Python (`uv`)
 
-| Task              | Command                                     |
-| ----------------- | ------------------------------------------- |
-| Run script / tool | `uv run …`                                  |
-| Tests             | `uv run pytest`                             |
-| Lint              | `uv run ruff check` / `uv run ruff format`  |
-| Types             | `uv run ty`                                 |
-| Add dependency    | `uv add <pkg>`                              |
-| Pip-style install | `uv pip install …`                          |
-| Create venv       | `uv venv`                                   |
-| Activate venv     | `source .venv/bin/activate` (alias: `venv`) |
-| One-off tool      | `uvx <tool>`                                |
+| Task | Command |
+|------|---------|
+| Run script / tool | `uv run …` |
+| Tests | `uv run pytest` |
+| Lint | `uv run ruff check` / `uv run ruff format` |
+| Types | `uv run ty` |
+| Add dependency | `uv add <pkg>` |
+| Pip-style install | `uv pip install …` |
+| Create venv | `uv venv` |
+| Activate venv | `source .venv/bin/activate` (alias: `venv`) |
+| One-off tool | `uvx <tool>` |
 
 Prefer PEP 723 inline metadata for standalone scripts when appropriate.
 
 ### Git
 
-| Task                      | Tool                                  |
-| ------------------------- | ------------------------------------- |
-| Worktrees / switch branch | **worktrunk**: `wt switch`            |
-| GitHub (PRs, issues, CI)  | **`gh`** — prefer rebase merge on PRs |
-| Interactive git TUI       | `lazygit`                             |
+| Task | Tool |
+|------|------|
+| Worktrees / switch branch | **worktrunk**: `wt switch` (alias: `wts`) |
+| GitHub (PRs, issues, CI) | **`gh`** — prefer rebase merge on PRs |
+| Interactive git TUI | `lazygit` |
 
 Common aliases: `gst`, `gco`, `gp`, `ga` (add -p), `glog`.
 
@@ -86,8 +88,8 @@ Common aliases: `gst`, `gco`, `gp`, `ga` (add -p), `glog`.
 
 ### Other
 
-- **HTML → markdown:** `bunx defuddle parse` (alias: `web-md`).
-  ex: `web-md https://ericmjl.github.io/blog/2026/3/6/mastering-personal-knowledge-management-with-obsidian-and-ai/ --markdown`
+- **HTML → markdown:** `bunx defuddle parse` (alias: `web-md`)
+- **Dotfiles:** GNU Stow from `~/.dotfiles`
 
 Skills live in `agents/.agents/skills/` — load the relevant skill when a task matches (gh-cli, obsidian, pdf, etc.).
 
@@ -98,7 +100,6 @@ Skills live in `agents/.agents/skills/` — load the relevant skill when a task 
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
-
 - State your assumptions explicitly. If uncertain, ask.
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
@@ -121,14 +122,12 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 **Touch only what you must. Clean up only your own mess.**
 
 When editing existing code:
-
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
 - If you notice unrelated dead code, mention it - don't delete it.
 
 When your changes create orphans:
-
 - Remove imports/variables/functions that YOUR changes made unused.
 - Don't remove pre-existing dead code unless asked.
 
@@ -139,13 +138,11 @@ The test: Every changed line should trace directly to the user's request.
 **Define success criteria. Loop until verified.**
 
 Transform tasks into verifiable goals:
-
 - "Add validation" → "Write tests for invalid inputs, then make them pass"
 - "Fix the bug" → "Write a test that reproduces it, then make it pass"
 - "Refactor X" → "Ensure tests pass before and after"
 
 For multi-step tasks, state a brief plan:
-
 ```
 1. [Step] → verify: [check]
 2. [Step] → verify: [check]

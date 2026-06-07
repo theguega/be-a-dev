@@ -24,6 +24,8 @@ Personal agent instructions for **theguega**. Merge with project-specific rules 
 
 **Explain concepts:** Concrete examples and analogies — theguega is visual. **No diagrams or visuals unless explicitly asked** — text only by default.
 
+**Depth:** Answer only the layer asked. Don't volunteer adjacent contextor the "next logical question" — theguega excavates deliberately, one layer at a time.
+
 **Code:** Real code over pseudocode, always.
 
 **Format:** Short bullets or direct prose. No walls of text. If more depth is needed, theguega will ask.
