@@ -1,10 +1,8 @@
 .DS_Store
-zed/.config/zed/prompts/
 **.DS_Store
-tmux/.config/tmux/plugins
-vscode-linux/.config/Code/User/**
-zed/.config/zed/conversations
-agents/.cursor/*
+
+zed/.config/zed/*
+!zed/.config/zed/settings.json
+
+agents/.cursor/rules/*
 !agents/.cursor/rules/AGENTS.md
-agents/.pi/*
-!agents/.pi/agent/AGENTS.md
