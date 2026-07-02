@@ -259,6 +259,7 @@ run_linux() {
     if $want_gnome; then
         run_with_progress "Configuring GNOME extensions" linux_set_gnome_extensions
         run_with_progress "Configuring GNOME hotkeys" linux_set_gnome_hotkeys
+        run_with_progress "Configuring XDG defaults" linux_set_xdg_defaults
     fi
 
     if $want_cli || $want_ui || $want_gnome; then

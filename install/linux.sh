@@ -168,7 +168,7 @@ linux_set_gnome_extensions() {
     gsettings set org.gnome.shell.extensions.blur-my-shell.dash-to-dock style-dash-to-dock 0
 
     gsettings set org.gnome.shell.extensions.space-bar.behavior smart-workspace-names false
-    gsettings set org.gnome.shell.extensions.space-bar.shortcuts enable-activate-workspace-shortcuts false
+    gsettings set org.gnome.shell.extensions.space-bar.shortcuts enable-activate-workspace-shortcuts true
     gsettings set org.gnome.shell.extensions.space-bar.shortcuts enable-move-to-workspace-shortcuts true
     gsettings set org.gnome.shell.extensions.space-bar.shortcuts open-menu "@as []"
 
@@ -210,6 +210,11 @@ linux_set_gnome_hotkeys() {
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']"
 
+    for i in 1 2 3 4 5 6; do
+        gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
+    done
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><Shift>0']"
+
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
 
     gsettings set org.gnome.desktop.wm.keybindings switch-input-source "@as []"
@@ -228,4 +233,11 @@ linux_set_gnome_hotkeys() {
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ name 'new chrome'
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command 'google-chrome'
     gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding '<Shift><Alt>1'
+}
+
+linux_set_xdg_defaults() {
+    info "Setting XDG default applications..."
+
+    xdg-mime default dev.zed.Zed.desktop text/plain
+    xdg-mime default dev.zed.Zed.desktop text/markdown
 }
