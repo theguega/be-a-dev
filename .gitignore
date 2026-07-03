@@ -5,5 +5,7 @@ zed/.config/zed/*
 !zed/.config/zed/settings.json
 !zed/.config/zed/keymap.json
 
+agents/.claude/settings.local.json
+
 agents/.cursor/rules/*
 !agents/.cursor/rules/AGENTS.md
