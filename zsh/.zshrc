@@ -75,3 +75,7 @@ alias audio-transc='uvx audio-transc'
 
 # ── host / machine overrides ────────────────────────────────
 [[ -r ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
+
+export PATH="/home/theo/.cargo/bin:$PATH"
+
+export PATH="/home/theo/.local/bin:$PATH"

@@ -50,6 +50,7 @@ macos_brew_install_formulas_only() {
     export HOMEBREW_BUNDLE_CASK_SKIP
 
     info "Installing Homebrew formulae from Brewfile..."
+    brewfile_trust_third_party "$brewfile"
     if brew bundle check --file="$brewfile" >/dev/null 2>&1; then
         warning "All Brewfile dependencies already satisfied"
     else
@@ -67,6 +68,7 @@ macos_brew_install_casks_only() {
     export HOMEBREW_BUNDLE_BREW_SKIP
 
     info "Installing Homebrew casks from Brewfile..."
+    brewfile_trust_third_party "$brewfile"
     brew bundle install --file="$brewfile"
 }
 
