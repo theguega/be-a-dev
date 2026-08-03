@@ -69,6 +69,7 @@ linux_brew_install_cli() {
     linux_ensure_brew_shellenv || error "Homebrew not available; run prerequisites first"
 
     info "Installing CLI tools via Homebrew..."
+    brewfile_trust_third_party "$brewfile"
     if brew bundle check --file="$brewfile" >/dev/null 2>&1; then
         warning "All Brewfile dependencies already satisfied"
     else

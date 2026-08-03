@@ -14,38 +14,38 @@ Personal development environment: a cross-platform [install script](#installatio
 
 ## Setup
 
-### Prerequisites
+### One-liner (recommended)
 
-**macOS:** [Xcode Command Line Tools](https://developer.apple.com/library/archive/technotes/tn2339/_index.html) (needed for Git and Homebrew):
+Clones or updates `~/.dotfiles`, runs non-interactive `./setup.sh -a` (SSH/GUI guards apply), then stows configs for the current context:
 
 ```zsh
-xcode-select --install
+curl -fsSL https://raw.githubusercontent.com/theguega/.dotfiles/main/bootstrap.sh | bash
 ```
 
-**Linux (Debian/Ubuntu):** No extra prep; the installer uses `apt` where needed.
+**macOS:** [Xcode Command Line Tools](https://developer.apple.com/library/archive/technotes/tn2339/_index.html) must already be installed (`xcode-select --install`) so `git` is available.
 
-### Clone
+**Linux (Debian/Ubuntu):** Bootstrap installs `git` via `apt` if needed.
+
+Re-run the same command to pull and re-apply setup + stow.
+
+### Stow packages
+
+| Context | Packages |
+|---------|----------|
+| Always (incl. SSH / server) | `zsh` `nvim` `git` `ohmyposh` `bat` `lazygit` `yazi` |
+| macOS desktop | + `aerospace` `ghostty` `zed` |
+| Linux desktop | + `ghostty` `zed` |
+
+Desktop means not an SSH session; on Linux a GUI session (`DISPLAY` / `WAYLAND_DISPLAY`) is also required.
+
+### Manual install
 
 ```zsh
-git clone git@github.com:theguega/.dotfiles.git ~/.dotfiles
-# or HTTPS: git clone https://github.com/theguega/.dotfiles.git ~/.dotfiles
+git clone https://github.com/theguega/.dotfiles.git ~/.dotfiles
+# or SSH: git clone git@github.com:theguega/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-```
-
-### Installation
-
-**Interactive** (prompts for each step; SSH sessions skip GUI/GNOME prompts automatically):
-
-```zsh
-./setup.sh
-```
-
-**Non-interactive** (flags only; same SSH/GUI guards apply):
-
-```zsh
-./setup.sh --help          # options and examples
-./setup.sh -a              # everything applicable on this OS
-./setup.sh --cli --ui --defaults
+./setup.sh -a          # or ./setup.sh for interactive prompts
+./bootstrap.sh         # optional: same clone/update + setup -a + stow path
 ```
 
 | Flag | Effect |
@@ -56,18 +56,7 @@ cd ~/.dotfiles
 | `-d` / `--defaults` | macOS `defaults` (Finder, Dock, keyboard, …) |
 | `-g` / `--gnome` | Linux: GNOME extensions and hotkeys |
 
-The installer does **not** run Stow; it sets up software, optional OS/desktop tweaks, and creates `~/.zsh/local.zshenv` when needed (see [Zsh](#zsh)). Restart after large system or GNOME changes if something still looks stale.
-
-### Linking configs with Stow
-
-[Stow](https://www.gnu.org/software/stow/) is installed via Homebrew (`brew "stow"` in the Brewfile). After `./setup.sh`, symlink the packages you want from the repo into your home directory, for example:
-
-```zsh
-cd ~/.dotfiles
-stow zsh git nvim zed ghostty
-```
-
-Use `stow -n …` first to preview. Host-specific shell snippets go in `~/.zsh/local.zshenv` and `~/.zsh/local.zshrc` (see below); they are not tracked in git.
+`./setup.sh` alone does **not** run Stow; use `./bootstrap.sh` for setup + stow, or stow packages yourself from the repo root (`stow -n …` to preview). Host-specific shell snippets go in `~/.zsh/local.zshenv` and `~/.zsh/local.zshrc` (see below); they are not tracked in git.
 
 ## Zsh
 
@@ -132,12 +121,13 @@ This starts **three** `linux/amd64` jobs at once (Ubuntu 24.04, Ubuntu 22.04, De
 
 ```
 .dotfiles/
-├── setup.sh              # Entrypoint: sources install/run.sh
+├── bootstrap.sh          # Curl entrypoint: clone/update, setup -a, stow
+├── setup.sh              # Software installer: sources install/run.sh
 ├── install/
 │   ├── run.sh              # Prompts or CLI flags, dispatches macOS/Linux
 │   ├── macos.sh            # Xcode CLT, Homebrew, Brewfile splits, defaults
 │   ├── linux.sh            # apt, Linuxbrew, Brewfile, apt UI, GNOME
-│   └── lib/                # utils, env detection, Brewfile helpers, ~/.zsh/local.zshenv
+│   └── lib/                # utils, env, stow selection, Brewfile, ~/.zsh/local.zshenv
 ├── homebrew/
 │   └── Brewfile            # Formulae + macOS casks
 ├── zsh/                    # .zshenv, .zshrc (stow as `zsh`)

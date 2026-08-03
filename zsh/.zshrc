@@ -2,6 +2,9 @@
 [[ -o interactive ]] || return
 
 bindkey -e
+bindkey '^[[1;5C' forward-word '^[[1;5D' backward-word   # ctrl+arrows
+bindkey '^[[1;3C' forward-word '^[[1;3D' backward-word   # alt+arrows
+bindkey '^H' backward-kill-word                          # ctrl+backspace
 
 # ── history ─────────────────────────────────────────────────
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
@@ -72,3 +75,7 @@ alias audio-transc='uvx audio-transc'
 
 # ── host / machine overrides ────────────────────────────────
 [[ -r ~/.zsh/local.zshrc ]] && source ~/.zsh/local.zshrc
+
+export PATH="/home/theo/.cargo/bin:$PATH"
+
+export PATH="/home/theo/.local/bin:$PATH"

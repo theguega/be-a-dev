@@ -1,12 +1,5 @@
 {
-  "agent_servers": {
-    "claude-acp": {
-      "default_config_options": {
-        "mode": "bypassPermissions"
-      },
-      "type": "registry"
-    }
-  },
+  "diff_view_style": "split",
   "cli_default_open_behavior": "new_window",
   "edit_predictions": {
     "mode": "subtle",
@@ -38,9 +31,12 @@
   },
   "max_tabs": 1,
   "git_panel": {
+    "group_by": "none",
     "tree_view": true,
     "dock": "right",
   },
+  "expand_excerpt_lines": 20,
+  "excerpt_context_lines": 30,
   "tab_bar": {
     "show": false,
   },

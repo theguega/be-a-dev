@@ -10,9 +10,4 @@ font-size=18
 font-thicken=true
 font-thicken-strength=1
 cursor-style=block
-keybind = ctrl+right=esc:f
-keybind = ctrl+left=esc:b
-keybind = alt+right=esc:f
-keybind = alt+left=esc:b
-keybind = ctrl+backspace=text:\x1b\x7f
 keybind = shift+enter=text:\n
