@@ -1,4 +1,12 @@
 {
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "bypassPermissions"
+      },
+      "type": "registry"
+    }
+  },
   "cli_default_open_behavior": "new_window",
   "edit_predictions": {
     "mode": "subtle",
@@ -64,13 +72,13 @@
         // This will compile a PDF for the `main.typ` file in the project root.
         "exportPdf": "onSave",
         "outputPath": "$root/$name",
-        "projectResolution": "lockDatabase",
+        "lockDatabase": "true",
       },
     },
   },
   "languages": {
     "Typst": {
-      "soft_wrap": "none",
+      "soft_wrap": "editor_width",
     },
     "Python": {
       "code_actions_on_format": {

@@ -1,0 +1,8 @@
+[theme]
+name = "catppuccin-latte"
+
+[remote]
+manage_ssh_config = true
+
+[experimental]
+kitty_graphics = true
