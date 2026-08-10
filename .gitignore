@@ -12,3 +12,4 @@ agents/.cursor/*
 
 agents/.claude/*
 !agents/.claude/CLAUDE.md
+!agents/.claude/skills
