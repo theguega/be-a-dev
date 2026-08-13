@@ -14,9 +14,7 @@ These are common instructions for theguega's agents across all scenarios.
 ## theguega's personal preference
 
 - I like code which is minimal, aesthetic, and idiomatic.
-- I am a Founding Engineer at Opalin, working on ML (Vision Language Action models), Data Pipeline, Robotics Control.
-- Opalin believes today's SOTA in robotics is already enough to deploy real value.
-  We're building a bimanual, low-cost robotics cell that augments factory workers: 95% automation, on-site data collection, and training for specialized models. Control is a seamless orchestration layer across four modes : full ai autonomy, traditional robotics autonomy, leader-arm teleoperation for absolute control, and HID-based relative adjustments switching between them without friction.
+- Comments must describe what the code does, never what changed or why it changed; keep them single-line and only where the code cannot speak for itself.
 
 ## Coding principles
 
@@ -44,15 +42,3 @@ Ladder runs _after_ you understand the problem — read the task, trace the real
 - Match existing style even if you'd do it differently.
 - Remove imports/vars only YOUR change orphaned; leave pre-existing dead code, just flag it.
 
-**Idiomatic & elegant over clever.** Deletion over addition. Boring over clever. Fewest files. No abstraction/modularity for single-use code, no speculative flexibility. If two stdlib approaches are the same size, pick the edge-case-correct one — laziness ≠ flimsier algorithm.
-
-**Not lazy about:** input validation at trust boundaries, error handling that prevents data loss, security, accessibility, real-hardware calibration (platform ≠ spec ideal), anything explicitly requested.
-
-**Every non-trivial change needs one runnable check** — assert-based demo or small test, no frameworks. Trivial one-liners: skip.
-
-**Goal framing for multi-step tasks:**
-
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-```
